@@ -1,0 +1,40 @@
+Setup: 
+  ✔ Delete defaults @done(22-08-21 09:39)
+  ✔ Change Favicon & Title @done(22-08-21 09:39)
+  ✔ Add Images @done(22-08-21 10:04)
+  Create React App & add dependencies:  
+    ✔ Material Ui @done(22-08-21 09:39)
+    ✔ Redux Toolkit @done(22-08-21 09:39)
+    ✔ React Router @done(22-08-21 09:39)
+    ✔ Mapbox @done(22-08-21 09:39)
+    ✔ Chart Js @done(22-08-21 09:39)
+    ✔ npm i @mui/material @emotion/react @emotion/styled @mui/icons-material @reduxjs/toolkit react-router-dom@6 chart.js react-chartjs-2 mapbox-gl @done(22-08-21 10:09)
+   Setup File Structure:
+    ✔ Components @done(22-08-21 10:09)
+    ✔ Pages @done(22-08-21 10:09)
+    ☐ Api with redux store & app folder
+    Style Considerations: 
+      ☐ Colors Themes Etc
+Layout: 
+  ☐ Create vertical nav
+  ☐ Create weather dsiplay
+  ☐ Dashboard page
+  ☐ Map page
+  ☐ Saved Locations
+  ☐ Calender ??
+Dashboard:
+  ☐ Navigation to switch betwen pages
+  ☐ Display Common information
+  ☐ Implement Chart
+  ☐ Implement Search
+  ☐ Button to switch between F & C
+Map:
+  ☐ Show Location On Search.
+  ☐ Condense Todays overview.
+Saved Location:
+  ☐ Display Location Name
+  ☐ OnClick display info on left.
+Considerations:
+  ☐ More Details button.
+  ☐ Add Top 10 Cites On Map.
+  ☐ Add Even More Cites On Map.. Maybe per country or location based. 
