@@ -8,22 +8,23 @@ Setup:
     ✔ React Router @done(22-08-21 09:39)
     ✔ Mapbox @done(22-08-21 09:39)
     ✔ Chart Js @done(22-08-21 09:39)
-    ✔ npm i @mui/material @emotion/react @emotion/styled @mui/icons-material @reduxjs/toolkit react-router-dom@6 chart.js react-chartjs-2 mapbox-gl @done(22-08-21 10:09)
+    ✔ npm i @mui/material @emotion/react @emotion/styled @mui/icons-material @reduxjs/toolkit react-redux react-router-dom@6 chart.js react-chartjs-2 mapbox-gl @done(22-08-21 10:09)
    Setup File Structure:
     ✔ Components @done(22-08-21 10:09)
     ✔ Pages @done(22-08-21 10:09)
-    ☐ Api with redux store & app folder
+    ✔ Api with redux store & app folder @done(22-08-21 11:25)
     Style Considerations: 
-      ☐ Colors Themes Etc
+      ✔ Colors Themes Etc @done(22-08-21 14:23)
 Layout: 
-  ☐ Create vertical nav
-  ☐ Create weather dsiplay
-  ☐ Dashboard page
-  ☐ Map page
-  ☐ Saved Locations
-  ☐ Calender ??
+  ✔ Create vertical nav @done(22-08-21 22:16)
+  ✔ Link Routes @done(22-08-21 22:16)
+  ✔ Create weather dsiplay @done(22-08-21 22:18)
+  ✔ Dashboard page @done(22-08-21 22:18)
+  ✔ Map page @done(22-08-21 22:18)
+  ✔ Saved Locations @done(22-08-21 22:18)
 Dashboard:
-  ☐ Navigation to switch betwen pages
+  ✔ Navigation to switch betwen pages @done(22-08-21 22:19)
+  ☐ Geolocation
   ☐ Display Common information
   ☐ Implement Chart
   ☐ Implement Search
