@@ -24,18 +24,18 @@ Layout:
   ✔ Saved Locations @done(22-08-21 22:18)
 Dashboard:
   ✔ Navigation to switch betwen pages @done(22-08-21 22:19)
-  ☐ Geolocation
+  ☐ Implement Search
+  ☐ Geolocation Custom Hook
   ☐ Display Common information
   ☐ Implement Chart
-  ☐ Implement Search
-  ☐ Button to switch between F & C
 Map:
   ☐ Show Location On Search.
   ☐ Condense Todays overview.
+   ☐ Add Top 10 Cites On Map.
 Saved Location:
   ☐ Display Location Name
   ☐ OnClick display info on left.
 Considerations:
   ☐ More Details button.
-  ☐ Add Top 10 Cites On Map.
   ☐ Add Even More Cites On Map.. Maybe per country or location based. 
+  ☐ Button to switch between F & C

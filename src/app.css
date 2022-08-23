@@ -8,6 +8,14 @@
 .img-icon {
     width: 3rem;
 }
+.img-arrow {
+    width: 1rem;
+}
+.arrow-container{
+    display: flex;
+    justify-content: center;
+    gap: 5px
+}
 .att-icons {
     text-decoration: none;
     color: black;

@@ -14,12 +14,15 @@ export const weatherApi = createApi({
     baseQuery: fetchBaseQuery({baseUrl}),
     endpoints: (builder) => ({
         getForecastWeather: builder.query({
-            query: (location) => fetchRequest(`/forecast.json?q=${location}&days=3`)
+            query: (location) => fetchRequest(`forecast.json?q=${location}&days=3`)
         }),
         getSearchWeather: builder.query({
             query: (search) => fetchRequest(`search.json?q=${search}`)
         }),
+        getHistoryWeather: builder.query({
+            query: ({selectedLocation, yesterday}) => fetchRequest(`history.json?q=${selectedLocation}&dt=${yesterday}&lang=en`)
+        })
     })
 })
 
-export const { useGetForecastWeatherQuery, useGetSearchWeatherQuery } = weatherApi
+export const { useGetForecastWeatherQuery, useGetSearchWeatherQuery, useGetHistoryWeatherQuery } = weatherApi
