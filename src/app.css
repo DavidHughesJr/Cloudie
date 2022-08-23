@@ -5,3 +5,10 @@
 .nav-img img {
     width: 5rem;
 }
+.img-icon {
+    width: 3rem;
+}
+.att-icons {
+    text-decoration: none;
+    color: black;
+}

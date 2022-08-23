@@ -5,6 +5,7 @@ import { navTheme } from './theme/navTheme'
 import { DashboardContainer, NavContainer, MiddleContainer, WeatherContainer } from './theme/containers';
 import {Routes, Route} from 'react-router-dom'
 import { Dashboard, Map, Saves} from './pages/allPages'
+import { Typography } from '@mui/material';
 
 
 
@@ -25,7 +26,7 @@ const App = () => {
       </MiddleContainer>
       <WeatherContainer>
         <div>
-          
+          {/* <Typography variant='caption'>  <a target="_blank" className='att-icons' href="https://icons8.com">Icons By Icon8 </a> </Typography> */}
         </div>
       </WeatherContainer>
     </DashboardContainer>
