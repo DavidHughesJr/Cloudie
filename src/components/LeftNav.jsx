@@ -1,6 +1,5 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
-import Box from '@mui/material/Box';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import {
@@ -14,6 +13,7 @@ import logo from '../img/logo.png'
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import MapIcon from '@mui/icons-material/Map';
 import StarIcon from '@mui/icons-material/Star';
+import { LeftNavContainer } from '../theme/containers';
 
 function Router(props) {
     const { children } = props;
@@ -46,7 +46,7 @@ function useRouteMatch(patterns) {
     return null;
 }
 
-export default function Nav() {
+export default function LeftNav() {
     // You need to provide the routes in descendant order.
     // This means that if you have nested routes like:
     // users, users/new, users/edit.
@@ -57,19 +57,19 @@ export default function Nav() {
 
     return (
 
-        <Box >
+        <LeftNavContainer>
             <div className='nav-img'> <img src={logo} alt="logo" /></div>
             <Tabs
                 value={currentTab}
                 orientation="vertical"
                 indicatorColor=''
-                
+                textColor='inherit'
             >
                 <Tab icon={<DashboardIcon />} label="Dashboard" value="/" to="/" component={Link} />
                 <Tab icon={<MapIcon />} label="Map" value="/map" to="/map" component={Link} />
                 <Tab icon={<StarIcon />} label="Saves" value="/saves" to="/saves" component={Link} />
             </Tabs>
-        </Box>
+        </LeftNavContainer>
 
     );
 }

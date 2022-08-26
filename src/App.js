@@ -1,35 +1,33 @@
 import React from 'react'
-import Nav from './components/Nav'
 import { ThemeProvider } from '@mui/material/styles';
-import { navTheme } from './theme/navTheme'
-import { DashboardContainer, NavContainer, MiddleContainer, WeatherContainer } from './theme/containers';
-import {Routes, Route} from 'react-router-dom'
-import { Dashboard, Map, Saves} from './pages/allPages'
-import { Typography } from '@mui/material';
+import LeftNav from './components/LeftNav'
+import { theme } from './theme/theme'
+import { DashboardContainer, MiddleContainer, WeatherContainer } from './theme/containers';
+import { Routes, Route } from 'react-router-dom'
+import { Dashboard, Map, Saves } from './pages/allPages'
+import TopNav from './components/TopNav';
+import WeatherDisplay from './components/WeatherDisplay'
 
 
 
 const App = () => {
   return (
-    <DashboardContainer>
-      <NavContainer>
-        <ThemeProvider theme={navTheme}>
-          <Nav />
-        </ThemeProvider>
-      </NavContainer>
-      <MiddleContainer>
-        <Routes>
-          <Route path="/" element={<Dashboard/>} />
-          <Route path="/map" element={<Map />} />
-          <Route path="/saves" element={<Saves />} />
-        </Routes>
-      </MiddleContainer>
-      <WeatherContainer>
-        <div>
-          {/* <Typography variant='caption'>  <a target="_blank" className='att-icons' href="https://icons8.com">Icons By Icon8 </a> </Typography> */}
-        </div>
-      </WeatherContainer>
-    </DashboardContainer>
+    <div>
+      <ThemeProvider theme={theme}>
+        <TopNav />
+        <DashboardContainer>
+          <LeftNav />
+          <MiddleContainer>
+            <Routes>
+              <Route path="/" element={<Dashboard />} />
+              <Route path="/map" element={<Map />} />
+              <Route path="/saves" element={<Saves />} />
+            </Routes>
+          </MiddleContainer>
+          <WeatherDisplay />
+        </DashboardContainer>
+      </ThemeProvider>
+    </div>
 
   )
 }

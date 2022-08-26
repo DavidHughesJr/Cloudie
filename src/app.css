@@ -1,3 +1,6 @@
+body {
+    margin: 0;
+}
 .nav-img {
     display: flex;
     justify-content: center;
@@ -14,9 +17,13 @@
 .arrow-container{
     display: flex;
     justify-content: center;
-    gap: 5px
+    gap: 5px;
+    min-width: 5rem
 }
 .att-icons {
     text-decoration: none;
     color: black;
+}
+.MuiAutocomplete-root .MuiOutlinedInput-root{
+    padding: 5px !important 
 }

@@ -1,12 +1,17 @@
 
 import React, { useEffect, useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { setLocation } from '../services/weatherSlice'
 import { Box, Autocomplete, TextField, InputAdornment, ToggleButton } from '@mui/material'
 import SearchIcon from '@mui/icons-material/Search';
 import StarIcon from '@mui/icons-material/Star';
 import { useGetSearchWeatherQuery } from '../services/weatherApi'
 
 
-const SearchBar = ({setSelectedLocation}) => {
+const SearchBar = () => {
+
+  const dispatch = useDispatch()
+
   const [selected, setSelected] = useState(false);
 
   const [search, setSearch] = useState('')
@@ -22,7 +27,7 @@ const SearchBar = ({setSelectedLocation}) => {
   }, [data])
 
   const handleKeyDown = (event) => {
-   
+
     setSearch(event.target.value)
     if (event.key === 'Enter') {
       document.getElementsByClassName('text').click()
@@ -33,16 +38,16 @@ const SearchBar = ({setSelectedLocation}) => {
   return (
     <Box sx={{ display: 'flex', alignItems: 'flex-end', gap: '1rem' }}>
       <Autocomplete
-        sx={{ width: '15rem' }}
+        sx={{ width: '15rem', padding: 0}}
         freeSolo
         disableClearable
         filterOptions={(x) => x}
         id="search"
-        onChange={(event, value) => setSelectedLocation(value)}
+        onChange={(event, value) => dispatch(setLocation(value))}
         options={autoCompleteList?.map((data) => data.name)}
         renderInput={(params) => (
           <TextField
-          className='text'
+            className='text'
             id='searchField'
             placeholder='Search Locations'
             onKeyDown={handleKeyDown}
@@ -51,13 +56,13 @@ const SearchBar = ({setSelectedLocation}) => {
               ...params.InputProps,
               type: 'search',
               startAdornment: <InputAdornment position="start"> <SearchIcon /> </InputAdornment>,
-              
+
             }}
           />
         )}
       />
       <ToggleButton
-        sx={{ height: '100%', width: '4rem' }}
+        sx={{ width: '4rem' }}
         value="check"
         color='primary'
         selected={selected}
