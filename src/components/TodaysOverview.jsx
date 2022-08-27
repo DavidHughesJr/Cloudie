@@ -1,13 +1,13 @@
 import React from 'react'
-import { Box, Typography, Grid, Paper } from '@mui/material'
+import { Box, Typography, Grid, Stack } from '@mui/material'
 import windImg from '../img/wind.png'
 import rainImg from '../img/rain.png'
 import pressureImg from '../img/pressure.png'
 import sunImg from '../img/sun.png'
 import arrowUp from '../img/arrow-up.png'
 import arrowDown from '../img/arrow-down.png'
-
-
+import { SpaceAroundPaper } from '../theme/theme'
+import { Colors } from '../config/colors'
 
 const TodaysOverview = ({ current, forecast }) => {
 
@@ -32,20 +32,17 @@ const TodaysOverview = ({ current, forecast }) => {
                 {
                     todaysOverviewItems.map(({ icon, item, value, change, arrow }) =>
                         <Grid item xs={6}>
-                            <Paper sx={{ display: 'flex', width: '100%', height: '10rem', justifyContent: 'space-around', alignItems: 'center', backgroundColor: '#FBFBFB' }} elevation={0}>
-                                <div>
-                                    <img className='img-icon' src={icon} alt='icon' />
-                                </div>
-                                <div style={{ display: 'flex', flexDirection: 'column' }}>
+                            <SpaceAroundPaper sx={{ backgroundColor: '#FBFBFB', padding: '2rem' }} elevation={0}>
+                                <img className='img-icon' src={icon} alt='icon' />
+                                <Stack>
                                     <Typography color='secondary.dark' variant='subtitle2'> {item} </Typography>
                                     <Typography variant='h5'> {value} </Typography>
-                                </div>
-                                <div className='arrow-container'>
+                                </Stack>
+                                <Stack direction='row'>
                                     <img className='img-arrow' src={arrow} />
-                                    <Typography color='secondary.dark'   variant='subtitle2'> {change} </Typography>
-                                </div>
-
-                            </Paper>
+                                    <Typography color='secondary.dark' variant='subtitle2'> {change} </Typography>
+                                </Stack>
+                            </SpaceAroundPaper>
                         </Grid>
                     )
                 }

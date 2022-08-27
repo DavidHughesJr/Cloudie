@@ -11,9 +11,7 @@ import { useGetSearchWeatherQuery } from '../services/weatherApi'
 const SearchBar = () => {
 
   const dispatch = useDispatch()
-
   const [selected, setSelected] = useState(false);
-
   const [search, setSearch] = useState('')
   const [autoCompleteList, setAutoCompleteList] = useState([])
   const { data } = useGetSearchWeatherQuery(search)

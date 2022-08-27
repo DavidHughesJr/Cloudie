@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { setLocation } from '../services/weatherSlice'
-import { Box, Typography } from '@mui/material'
+import { Box, Typography, Stack } from '@mui/material'
 import { useGetForecastWeatherQuery } from '../services/weatherApi'
 import Moment from 'react-moment';
 import useGeoLocation from '../hooks/useGeoLocation'
@@ -30,11 +30,11 @@ const Dashboard = () => {
     return (
         <Box>
             <Box sx={{ paddingBottom: '2rem', display: 'flex', justifyContent: 'space-between', borderBottom: '1px solid lightgrey' }}>
-                <Box>
+                <Stack>
                     <Typography variant='h5'> {location?.name} </Typography>
                     <Typography variant='subtitle2'> {location?.region} </Typography>
                     <Typography variant='subtitle2'>  <Moment format="LLL" date={dateToFormat} />  </Typography>
-                </Box>
+                </Stack>
                 <SearchBar />
             </Box>
             <TodaysOverview current={current} forecast={forecast}/> 

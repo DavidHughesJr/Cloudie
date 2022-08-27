@@ -8,7 +8,7 @@ Setup:
     ✔ React Router @done(22-08-21 09:39)
     ✔ Mapbox @done(22-08-21 09:39)
     ✔ Chart Js @done(22-08-21 09:39)
-    ✔ npm i @mui/material @emotion/react @emotion/styled @mui/icons-material @reduxjs/toolkit --save moment react-moment react-redux react-router-dom@6 chart.js react-chartjs-2 mapbox-gl @done(22-08-21 10:09)
+    ✔ npm i @mui/material @emotion/react @emotion/styled @mui/icons-material @reduxjs/toolkit chartjs-plugin-datalabels moment react-moment react-redux react-router-dom@6 chart.js react-chartjs-2 mapbox-gl @done(22-08-21 10:09)
    Setup File Structure:
     ✔ Components @done(22-08-21 10:09)
     ✔ Pages @done(22-08-21 10:09)

@@ -1,6 +1,6 @@
 import { createTheme, styled } from '@mui/material/styles';
 import { Colors } from '../config/colors'
-import { LinearProgress, linearProgressClasses } from '@mui/material';
+import { Paper, LinearProgress, linearProgressClasses } from '@mui/material';
 
 
 export const theme = createTheme({
@@ -42,11 +42,19 @@ export const theme = createTheme({
 
 export const StyledLinearProgress = styled(LinearProgress)(({ theme }) => ({
     height: 30,
+    width: '15rem',
     borderRadius: 20,
-    marginBottom: 20,
-    backgroundColor: Colors,
+    marginBottom:  30,
+    backgroundColor: '#2A4263',
     [`& .${linearProgressClasses.bar}`]: {
     borderRadius: 20,
     backgroundColor: Colors.lightBlue
 },
 }));
+export const SpaceAroundPaper = styled(Paper)(({ theme }) => ({
+    display: 'flex', 
+    padding: '1rem',
+    justifyContent: 'space-around', 
+    alignItems: 'center', 
+}));
+

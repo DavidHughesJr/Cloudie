@@ -17,13 +17,13 @@ export const LeftNavContainer = styled(Box)(({ theme }) => ({
 export const MiddleContainer = styled(Box)(({ theme }) => ({
     backgroundColor: Colors.background,
     width: '50%',
-    padding: '1rem 2rem',
+    padding: '2rem 2rem',
 
 }));
 export const WeatherContainer = styled(Box)(({ theme }) => ({
     backgroundColor: Colors.tertiaryBackground,
     width: '30%',
-    padding: '1rem 2rem'
+    padding: '2rem 2rem'
 }));
 export const ContentContainer = styled(Box)(({ theme }) => ({
     marginTop: '2rem'
