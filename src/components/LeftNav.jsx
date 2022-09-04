@@ -63,7 +63,6 @@ export default function LeftNav() {
                 value={currentTab}
                 orientation="vertical"
                 indicatorColor=''
-                textColor='inherit'
             >
                 <Tab icon={<DashboardIcon />} label="Dashboard" value="/" to="/" component={Link} />
                 <Tab icon={<MapIcon />} label="Map" value="/map" to="/map" component={Link} />

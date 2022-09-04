@@ -81,7 +81,6 @@ function ResponsiveDrawer(props) {
                     value={currentTab}
                     orientation="vertical"
                     indicatorColor=''
-
                 >
                     <Tab icon={<DashboardIcon />} label="Dashboard" value="/" to="/" component={Link} />
                     <Tab icon={<MapIcon />} label="Map" value="/map" to="/map" component={Link} />

@@ -25,14 +25,9 @@ export const theme = createTheme({
                     display: 'flex',
                     gap: '1rem',
                     justifyContent: 'flex-start',
-                    fontWeight: 'bold'
-                },
-                selected: {
-                    backgroundColor: 'blue',
-                    color: 'blue',
-                    "&:hover": {
-                        backgroundColor: 'blue',
-                        color: 'blue'
+                    fontWeight: 'bold',
+                    "&.Mui-selected": {
+                        "color": Colors.blue,
                     }
                 }
             },
@@ -44,17 +39,17 @@ export const StyledLinearProgress = styled(LinearProgress)(({ theme }) => ({
     height: 30,
     width: '15rem',
     borderRadius: 20,
-    marginBottom:  30,
+    marginBottom: 30,
     backgroundColor: '#2A4263',
     [`& .${linearProgressClasses.bar}`]: {
-    borderRadius: 20,
-    backgroundColor: Colors.lightBlue
-},
+        borderRadius: 20,
+        backgroundColor: Colors.lightBlue
+    },
 }));
 export const SpaceAroundPaper = styled(Paper)(({ theme }) => ({
-    display: 'flex', 
+    display: 'flex',
     padding: '1rem',
-    justifyContent: 'space-around', 
-    alignItems: 'center', 
+    justifyContent: 'space-around',
+    alignItems: 'center',
 }));
 
