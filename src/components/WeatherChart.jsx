@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
 import { Button, Typography, Stack } from '@mui/material'
 import { ContentContainer } from '../theme/containers'
-import { Colors } from '../config/colors'
+import { Colors } from '../helper/colors'
 import {
   Chart as ChartJS,
   CategoryScale,

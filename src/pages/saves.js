@@ -1,6 +1,6 @@
 import { Box, Stack } from '@mui/material'
 import React, {useEffect} from 'react'
-
+import SavedItems from '../components/SavedItems'
 const Saves = () => {
 
   const getSavedItems = JSON.parse(localStorage.getItem('savedItems'))
@@ -14,7 +14,7 @@ const Saves = () => {
   return (
     <Box p={4}>
       <Stack>
-        <div> Saves </div>
+        <SavedItems /> 
         <div> Other Cities </div>
       </Stack>
     </Box>

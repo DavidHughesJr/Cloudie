@@ -1,31 +1,38 @@
 
 import React, { useEffect, useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { setLocation } from '../services/weatherSlice'
 import { Box, Autocomplete, TextField, InputAdornment, ToggleButton } from '@mui/material'
 import SearchIcon from '@mui/icons-material/Search';
 import StarIcon from '@mui/icons-material/Star';
 import { useGetSearchWeatherQuery } from '../services/weatherApi'
+import { setSaves } from "../services/weatherSlice";
+import { AddSaves, CheckForSavedData } from '../helper/saves'
 
+const SearchBar = ({ location }) => {
 
-const SearchBar = () => {
-
-  const dispatch = useDispatch()
   const [selected, setSelected] = useState(false);
   const [search, setSearch] = useState('')
   const [autoCompleteList, setAutoCompleteList] = useState([])
-  const { data } = useGetSearchWeatherQuery(search)
 
+
+  const { data } = useGetSearchWeatherQuery(search)
+  const saves = useSelector(state => state.weatherState.saves)
+  const itemSaved = useSelector(state => state.weatherState.itemSaved)
+  const dispatch = useDispatch()
+
+  const getSavedItems = JSON.parse(localStorage.getItem('savedItems'))
 
   useEffect(() => {
     if (data) {
       setAutoCompleteList(data)
-
+    }
+    if (getSavedItems) {
+      dispatch(setSaves(getSavedItems))
     }
   }, [data])
 
   const handleKeyDown = (event) => {
-
     setSearch(event.target.value)
     if (event.key === 'Enter') {
       document.getElementsByClassName('text').click()
@@ -33,10 +40,49 @@ const SearchBar = () => {
     }
   }
 
+  const addSaves = (item) => {
+    let itemList = [...saves]
+    let addArray = true
+    for (let i = 0; i < saves.length; i++) {
+      if (saves[i].name === item.name) {
+        itemList.splice(i, 1);
+        addArray = false
+      
+      }
+    }
+    if (addArray) {
+      itemList.push(item)
+     
+    }
+    dispatch(setSaves([...itemList]))
+  }
+
+  useEffect(() => {
+    // save to local storage
+    localStorage.setItem('savedItems', JSON.stringify(saves))
+
+    const savedItems = JSON.parse(localStorage.getItem('savedItems'))
+    if (savedItems) {
+      for (let i = 0; i < savedItems.length; i++) {
+        if (savedItems[i].name === location.name) {
+          setSelected(true)
+          dispatch(itemSaved = true)
+          // break to stop statement from throwing false
+          break
+        } else if (savedItems[i].id !== location.name) {
+          setSelected(false)
+          dispatch(itemSaved = false)
+        }
+      }
+    }
+
+  }, [saves])
+
+
   return (
     <Box sx={{ display: 'flex', alignItems: 'flex-end', gap: '1rem' }}>
       <Autocomplete
-        sx={{ width: '15rem', padding: 0}}
+        sx={{ width: '15rem', padding: 0 }}
         freeSolo
         disableClearable
         filterOptions={(x) => x}
@@ -66,6 +112,8 @@ const SearchBar = () => {
         selected={selected}
         onChange={() => {
           setSelected(!selected);
+          addSaves(location)
+
         }}
       >
         <StarIcon />

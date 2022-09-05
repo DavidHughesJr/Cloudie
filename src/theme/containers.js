@@ -1,6 +1,6 @@
 import { styled } from '@mui/material/styles';
 import { Box } from '@mui/material';
-import { Colors } from '../config/colors';
+import { Colors } from '../helper/colors';
 
 
 export const DashboardContainer = styled(Box)(({ theme }) => ({

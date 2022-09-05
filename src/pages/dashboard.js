@@ -40,7 +40,7 @@ const Dashboard = () => {
                     <Typography variant='subtitle2'> {location?.region} </Typography>
                     <Typography variant='subtitle2'>  <Moment format="LLL" date={dateToFormat} />  </Typography>
                 </Stack>
-                <SearchBar />
+                <SearchBar location={location}/>
             </Stack>
             <Divider light/> 
             <TodaysOverview current={current} forecast={forecast} />

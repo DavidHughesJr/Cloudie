@@ -26,9 +26,8 @@ const News = ({ news }) => {
                                             <Typography variant='subtitle2'> {shortText(news?.name, 50)} </Typography>
                                             <Typography variant='caption'> {news?.provider?.[0]?.name} </Typography>
                                             <Typography variant='caption'> <Moment format="LLL" date={dateToFormat} />   </Typography>
-
                                             <Divider light />
-                                            <Typography variant='body2'> {shortText(news?.description, 125)} </Typography>
+                                            <Typography variant='body2'> {shortText(news?.description, 100)} </Typography>
                                         </Stack>
                                     </CardContent>
                                     <CardActions>

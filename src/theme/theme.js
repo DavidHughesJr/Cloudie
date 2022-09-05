@@ -1,5 +1,5 @@
 import { createTheme, styled } from '@mui/material/styles';
-import { Colors } from '../config/colors'
+import { Colors } from '../helper/colors'
 import { Paper, LinearProgress, linearProgressClasses } from '@mui/material';
 
 

@@ -7,7 +7,7 @@ import sunImg from '../img/sun.png'
 import arrowUp from '../img/arrow-up.png'
 import arrowDown from '../img/arrow-down.png'
 import { SpaceAroundPaper } from '../theme/theme'
-import { Colors } from '../config/colors'
+import { Colors } from '../helper/colors'
 
 const TodaysOverview = ({ current, forecast }) => {
 
@@ -31,7 +31,7 @@ const TodaysOverview = ({ current, forecast }) => {
             <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
                 {
                     todaysOverviewItems.map(({ icon, item, value, change, arrow }) =>
-                        <Grid item xs={6}>
+                        <Grid key={item} item xs={6}>
                             <SpaceAroundPaper sx={{ backgroundColor: '#FBFBFB', padding: '2rem' }} elevation={0}>
                                 <img className='img-icon' src={icon} alt='icon' />
                                 <Stack>

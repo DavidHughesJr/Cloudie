@@ -75,7 +75,7 @@ const Mapbox = ({ location, current }) => {
             You are here
           </Popup>)}
       </Map>
-      <Button sx={{ marginTop: '0 !important' }} variant='contained'> Save Location </Button>
+      <Button   sx={{ marginTop: '0 !important', }}  variant={'contained'}> Save Location </Button>
     </>
   );
 }

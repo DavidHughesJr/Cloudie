@@ -44,7 +44,7 @@ const WeatherDisplay = () => {
                     <Typography variant='h3' color='secondary'> {fahrenheit ? `${current?.temp_f}°F` : `${current?.temp_c}°C`}  </Typography>
                     <Typography variant='h6' color='secondary'>  {current?.condition.text}</Typography>
                 </Stack>
-                <Button onClick={(e) => dispatch(setFahrenheit(fahrenheit ? false : true))} variant="contained"> {fahrenheit ? 'celsius' : 'fahrenheit'} </Button>
+                <Button onClick={() => dispatch(setFahrenheit(fahrenheit ? false : true))} variant="contained"> {fahrenheit ? 'celsius' : 'fahrenheit'} </Button>
             </Box>
             <Stack sx={{ marginTop: '1rem' }}>
                 <Typography sx={{ paddingBottom: '1rem' }} variant='h6' color='secondary'> Chance of rain </Typography>
