@@ -6,7 +6,7 @@ import { Box, Autocomplete, TextField, InputAdornment, ToggleButton } from '@mui
 import SearchIcon from '@mui/icons-material/Search';
 import StarIcon from '@mui/icons-material/Star';
 import { useGetSearchWeatherQuery } from '../services/weatherApi'
-import { setSaves } from "../services/weatherSlice";
+import { setSaves, setItemSaved } from "../services/weatherSlice";
 import { AddSaves, CheckForSavedData } from '../helper/saves'
 
 const SearchBar = ({ location }) => {
@@ -66,12 +66,12 @@ const SearchBar = ({ location }) => {
       for (let i = 0; i < savedItems.length; i++) {
         if (savedItems[i].name === location.name) {
           setSelected(true)
-          dispatch(itemSaved = true)
+          dispatch(setItemSaved(true))
           // break to stop statement from throwing false
           break
         } else if (savedItems[i].id !== location.name) {
           setSelected(false)
-          dispatch(itemSaved = false)
+          dispatch(setItemSaved(false))
         }
       }
     }

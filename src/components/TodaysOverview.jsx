@@ -27,6 +27,12 @@ const TodaysOverview = ({ current, forecast }) => {
 
     return (
         <Box sx={{ marginTop: '2rem' }}>
+            Slider with all hourly times
+            humdity wind rain chance
+            3 Card grid with forcast for three days
+            
+
+
             <Typography sx={{ marginBottom: '1rem', }} color='primary' variant='h6'> Todays Overview </Typography>
             <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
                 {
