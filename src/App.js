@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { ThemeProvider } from '@mui/material/styles';
 import LeftNav from './components/LeftNav'
 import { theme } from './theme/theme'
@@ -7,10 +7,15 @@ import { Routes, Route } from 'react-router-dom'
 import { Dashboard, Map, Saves } from './pages/allPages'
 import TopNav from './components/TopNav';
 import WeatherDisplay from './components/WeatherDisplay'
+import { useDispatch } from 'react-redux';
+import { setSaves } from './services/weatherSlice';
 
 
 
 const App = () => {
+
+ 
+
   return (
     <div>
       <ThemeProvider theme={theme}>
