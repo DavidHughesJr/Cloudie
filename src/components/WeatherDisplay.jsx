@@ -49,10 +49,10 @@ const WeatherDisplay = () => {
             <Stack sx={{ marginTop: '1rem' }}>
                 <Typography sx={{ paddingBottom: '1rem' }} variant='h6' color='secondary'> Chance of rain </Typography>
                 {
-                    rain48HourForecast?.slice(currentHour, currentHour + 4).map((hour) => {
+                    rain48HourForecast?.slice(currentHour, currentHour + 4).map((hour, i) => {
                         const dateToFormathour = hour.time
                         return (
-                            <Box key={hour.time} sx={{ display: 'flex', justifyContent: 'space-between', gap: '1rem' }}>
+                            <Box key={hour[i]} sx={{ display: 'flex', justifyContent: 'space-between', gap: '1rem' }}>
                                 <Typography variant='subtitle2' color='secondary'> {fahrenheit ? `${Math.round(hour?.temp_f)}°F` : `${Math.round(hour?.temp_c)}°C`} </Typography>
                                 <Typography variant='subtitle2' color='secondary'> <Moment format="hhA" date={dateToFormathour} /> </Typography>
                                 <StyledLinearProgress variant="determinate" value={hour.chance_of_rain} />

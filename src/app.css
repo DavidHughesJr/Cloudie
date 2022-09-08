@@ -10,10 +10,10 @@ body {
   width: 5rem;
 }
 .img-icon {
-  width: 3rem;
+  width: 2rem;
 }
-.img-arrow {
-  width: 1rem;
+.img-icon-2 {
+  width: 3rem;
 }
 .arrow-container {
   display: flex;

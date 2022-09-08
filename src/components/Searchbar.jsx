@@ -7,7 +7,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import StarIcon from '@mui/icons-material/Star';
 import { useGetSearchWeatherQuery } from '../services/weatherApi'
 import { setSaves, setItemSaved } from "../services/weatherSlice";
-import { AddSaves, CheckForSavedData } from '../helper/saves'
+
 
 const SearchBar = ({ location }) => {
 
@@ -47,12 +47,11 @@ const SearchBar = ({ location }) => {
       if (saves[i].name === item.name) {
         itemList.splice(i, 1);
         addArray = false
-      
       }
     }
     if (addArray) {
       itemList.push(item)
-     
+
     }
     dispatch(setSaves([...itemList]))
   }
@@ -60,7 +59,6 @@ const SearchBar = ({ location }) => {
   useEffect(() => {
     // save to local storage
     localStorage.setItem('savedItems', JSON.stringify(saves))
-
     const savedItems = JSON.parse(localStorage.getItem('savedItems'))
     if (savedItems) {
       for (let i = 0; i < savedItems.length; i++) {
@@ -113,7 +111,6 @@ const SearchBar = ({ location }) => {
         onChange={() => {
           setSelected(!selected);
           addSaves(location)
-
         }}
       >
         <StarIcon />

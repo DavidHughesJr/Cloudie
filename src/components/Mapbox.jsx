@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import mapboxgl from '!mapbox-gl'; // eslint-disable-line import/no-webpack-loader-syntax
 import Map, { Marker, Popup, GeolocateControl, NavigationControl, useControl } from 'react-map-gl';
 import MapBoxGeocoder from '@mapbox/mapbox-gl-geocoder';
@@ -6,7 +6,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Typography, Stack, Button } from '@mui/material';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css'
-import { setLocation } from '../services/weatherSlice';
+import { setLocation, setSaves, setItemSaved } from '../services/weatherSlice';
+
+
 
 const token = mapboxgl.accessToken = 'pk.eyJ1IjoiZGF2aWRodWdoZXNqciIsImEiOiJjbDN6dmlleGIzcHpoM2NyeHpwYmV0MW9jIn0.IPtZ9U22hIQNl6z1BsldMQ';
 
@@ -24,7 +26,6 @@ const Mapbox = ({ location, current }) => {
 
   const fahrenheit = useSelector(state => state.weatherState.fahrenheit)
   const dispatch = useDispatch()
-
   const geolocateControlRef = React.useCallback((ref) => {
     if (ref) {
       // Activate as soon as the control is loaded
@@ -46,6 +47,47 @@ const Mapbox = ({ location, current }) => {
     })
   }
 
+
+  const savedItems = JSON.parse(localStorage.getItem('savedItems'))
+  const saves = useSelector(state => state.weatherState.saves)
+  const savedToLocal = useSelector(state => state.weatherState.itemSaved)
+
+  useEffect(() => {
+    dispatch(setSaves(savedItems))
+  }, [])
+
+
+  const addSaves = (item) => {
+    let itemList = [...saves]
+    let addArray = true
+    for (let i = 0; i < saves.length; i++) {
+      if (saves[i].name === item.name) {
+        itemList.splice(i, 1);
+        addArray = false
+      }
+    }
+    if (addArray) {
+      itemList.push(item)
+    }
+    dispatch(setSaves([...itemList]))
+  }
+
+  useEffect(() => {
+    // save to local storage
+    localStorage.setItem('savedItems', JSON.stringify(saves))
+    if (savedItems) {
+      for (let i = 0; i < savedItems.length; i++) {
+        if (savedItems[i].name === location.name) {
+          dispatch(setItemSaved(true))
+          // break to stop statement from throwing false
+          break
+        } else if (savedItems[i].id !== location.name) {
+          dispatch(setItemSaved(false))
+        }
+      }
+    }
+
+  }, [savedItems])
 
 
   return (
@@ -75,7 +117,7 @@ const Mapbox = ({ location, current }) => {
             You are here
           </Popup>)}
       </Map>
-      <Button   sx={{ marginTop: '0 !important', }}  variant={'contained'}> Save Location </Button>
+      <Button onClick={() => { addSaves(location); dispatch(setItemSaved(!savedToLocal)) }} sx={savedToLocal ? { margin: '0 !important', backgroundColor: 'green' } : { margin: '0 !important', backgroundColor: '' }} variant={'contained'}> {savedToLocal ? 'Location Saved' : 'Save location'} </Button>
     </>
   );
 }
