@@ -1,12 +1,11 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Mapbox from '../components/Mapbox'
 import News from '../components/News';
-import { Box, Stack, Typography } from '@mui/material';
+import { Box, Stack } from '@mui/material';
 import { useSelector, useDispatch } from 'react-redux';
-import { useGetForecastWeatherQuery, useGetSearchWeatherQuery } from '../services/weatherApi';
+import { useGetForecastWeatherQuery } from '../services/weatherApi';
 import { useGetWeatherNewsQuery } from '../services/newsApi'
-import { setLocation } from '../services/weatherSlice';
-import { Search } from '@mui/icons-material';
+
 
 const Map = () => {
   const locationState = useSelector((state) => state.weatherState.location)
@@ -19,7 +18,7 @@ const Map = () => {
 
   const { data: news } = useGetWeatherNewsQuery(location?.region)
 
-
+console.log(location)
 
   if (isFetching) return 'Loading'
 

@@ -22,8 +22,11 @@ const Dashboard = () => {
     const location = data?.location
     const dateToFormat = location?.localtime
 
+
     useEffect(() => {
-        const currentLocation = [locationState ? locationState : getGeoLocation?.coordinates.lat, getGeoLocation?.coordinates.lng].toString()
+        const currentLocation =  locationState? locationState : [getGeoLocation?.coordinates.lat, getGeoLocation?.coordinates.lng].toString()
+
+        console.log(currentLocation)
         dispatch(setLocation(currentLocation))
     }, [getGeoLocation])
 
