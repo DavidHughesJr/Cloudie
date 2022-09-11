@@ -8,6 +8,7 @@ import useGeoLocation from '../hooks/useGeoLocation'
 import WeatherChart from '../components/WeatherChart'
 import TodaysOverview from '../components/TodaysOverview'
 import SearchBar from '../components/Searchbar'
+import ThreeDayForecast from '../components/ThreeDayForecast'
 
 
 const Dashboard = () => {
@@ -22,7 +23,7 @@ const Dashboard = () => {
     const dateToFormat = location?.localtime
 
     useEffect(() => {
-        const currentLocation = [getGeoLocation?.coordinates.lat, getGeoLocation?.coordinates.lng].toString()
+        const currentLocation = [locationState ? locationState : getGeoLocation?.coordinates.lat, getGeoLocation?.coordinates.lng].toString()
         dispatch(setLocation(currentLocation))
     }, [getGeoLocation])
 
@@ -31,7 +32,7 @@ const Dashboard = () => {
     return (
         <Box p={4}>
             <Stack
-                direction="row"
+                direction={{sm: 'column', md: 'row'}}
                 justifyContent="space-between"
                 sx={{paddingBottom: 2}}
                 >
@@ -44,6 +45,7 @@ const Dashboard = () => {
             </Stack>
             <Divider light/> 
             <TodaysOverview current={current} forecast={forecast} />
+            <ThreeDayForecast forecast={forecast} /> 
             <WeatherChart forecast={forecast} />
         </Box>
     )

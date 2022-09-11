@@ -1,6 +1,11 @@
 import React from 'react'
 import { Box, Typography, Grid, Card, CardContent, Divider, CardActions, Button, Link, Stack } from '@mui/material'
 import Moment from 'react-moment'
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+
+
+
 const News = ({ news }) => {
 
     const shortText = ((text, length) => {
@@ -13,13 +18,38 @@ const News = ({ news }) => {
     return (
         <Box p={4}>
             <Typography sx={{ marginBottom: 1 }} variant='h5'> News </Typography>
-            <Grid container spacing={{ xs: 2, md: 3 }} columns={{ sm: 1, md: 8, lg: 12}}
-            >  
+            <Swiper
+                spaceBetween={15}
+                slidesPerView={10}
+                slidesOffsetBefore={20}
+                breakpoints={{
+                    1920: {
+                        slidesPerView: 4
+                    },
+                    1450: {
+                        slidesPerView: 3
+                    },
+                    1020: {
+                        slidesPerView: 2
+                    },
+                    600: {
+                        slidesPerView: 1
+                    },
+                    480: {
+                        slidesPerView: 2
+                    },
+                    0: {
+
+                        slidesPerView: 1
+                    }
+                }}
+            
+            >
                 {
                     news?.value.map((news, i) => {
                         const dateToFormat = news?.datePublished
                         return (
-                            <Grid item xs={2} sm={4} md={4} key={i}>
+                          <SwiperSlide>
                                 <Card variant='outlined' sx={{ maxWidth: 300, minHeight: 300 }}>
                                     <CardContent>
                                         <Stack spacing={1}>
@@ -34,11 +64,11 @@ const News = ({ news }) => {
                                         <Link href={news?.url} target="_blank" underline="none" > <Button size='small'> Learn More </Button> </Link>
                                     </CardActions>
                                 </Card>
-                            </Grid>
+                            </SwiperSlide> 
                         )
                     })  
                 }
-            </Grid>
+            </Swiper>
         </Box>
     )
 }

@@ -19,6 +19,7 @@ import { Chart } from 'react-chartjs-2';
 
 import ChartDataLabels from "chartjs-plugin-datalabels";
 import zoomPlugin from 'chartjs-plugin-zoom';
+import { current } from '@reduxjs/toolkit'
 
 ChartJS.register(
   ChartDataLabels,
@@ -52,9 +53,11 @@ const WeatherChart = ({ forecast }) => {
 
   const fahrenheit = useSelector((state) => state.weatherState.fahrenheit)
   const combine48Hours = forecast ? [...forecast?.[0].hour, ...forecast?.[1].hour] : ''
+  const date = new Date()
+  const currentHour = date.getHours()
 
 
-  combine48Hours.forEach((hour) => {
+  combine48Hours?.slice(currentHour).forEach((hour) => {
     const time = new Date(hour.time)
     const convertedTime = time.toLocaleString('en-US', { hour: 'numeric', hour12: true })
     hourlyTimes.push(convertedTime)
@@ -77,14 +80,13 @@ const WeatherChart = ({ forecast }) => {
         data: hourly ? hourlyTemps : dayTemps,
         backgroundColor: Colors.blue,
         borderColor: Colors.blue,
-        borderWidth: 1,
-        label: 'hi'
       },
     ],
   }
 
   const options = {
     responsive: true,
+    
     scales: {
       yAxis: {
         display: false,
@@ -95,21 +97,12 @@ const WeatherChart = ({ forecast }) => {
         offset: true,
         grid: {
           drawBorder: false,
+       
           display: false,
         },
         ticks: {
           padding: 15,
         }
-      },
-      xAxis2: {
-        min: 0,
-        max: 4,
-        offset: true,
-        grid: {
-          drawBorder: false,
-          display: false,
-        },
-        position: "top",
       },
     },
     plugins: {

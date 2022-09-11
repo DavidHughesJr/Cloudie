@@ -1,6 +1,5 @@
 body {
   margin: 0;
-  overflow: hidden;
 }
 .nav-img {
   display: flex;
@@ -10,7 +9,7 @@ body {
   width: 5rem;
 }
 .img-icon {
-  width: 2rem;
+  width: 1.5rem;
 }
 .img-icon-2 {
   width: 3rem;
