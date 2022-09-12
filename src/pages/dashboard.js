@@ -26,7 +26,6 @@ const Dashboard = () => {
     useEffect(() => {
         const currentLocation =  locationState? locationState : [getGeoLocation?.coordinates.lat, getGeoLocation?.coordinates.lng].toString()
 
-        console.log(currentLocation)
         dispatch(setLocation(currentLocation))
     }, [getGeoLocation])
 

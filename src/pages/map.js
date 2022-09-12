@@ -2,7 +2,7 @@ import React from 'react';
 import Mapbox from '../components/Mapbox'
 import News from '../components/News';
 import { Box, Stack } from '@mui/material';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useGetForecastWeatherQuery } from '../services/weatherApi';
 import { useGetWeatherNewsQuery } from '../services/newsApi'
 
@@ -10,7 +10,6 @@ import { useGetWeatherNewsQuery } from '../services/newsApi'
 const Map = () => {
   const locationState = useSelector((state) => state.weatherState.location)
   const { data, isFetching } = useGetForecastWeatherQuery(locationState)
-  const dispatch = useDispatch()
   const location = data?.location
   const current = data?.current
 
