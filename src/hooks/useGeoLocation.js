@@ -23,9 +23,8 @@ const useGeoLocation = () => {
         })
     }
 
-    const options = {
-        enableHighAccuracy: true
-    }
+    
+    
     useEffect(() => {
         if (!('geolocation' in navigator)) {
             errorMsg({
@@ -33,7 +32,7 @@ const useGeoLocation = () => {
                 message: "Geolocation not enabled or supported"
             })
         }
-        navigator.geolocation.getCurrentPosition(successMsg, errorMsg, options)
+        navigator.geolocation.getCurrentPosition(successMsg, errorMsg)
     }, [])
     return geoLocation
 }
