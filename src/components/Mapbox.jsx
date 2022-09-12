@@ -87,7 +87,7 @@ const Mapbox = ({ location, current }) => {
       }
     }
 
-  }, [savedItems, dispatch, location.name, saves])
+  }, [savedItems, dispatch, location?.name, saves])
 
 
   return (

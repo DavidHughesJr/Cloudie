@@ -29,7 +29,7 @@ const SearchBar = ({ location }) => {
     if (getSavedItems) {
       dispatch(setSaves(getSavedItems))
     }
-  }, [data, dispatch, getSavedItems])
+  }, [data])
 
   const handleKeyDown = (event) => {
     setSearch(event.target.value)
@@ -73,7 +73,7 @@ const SearchBar = ({ location }) => {
       }
     }
 
-  }, [saves, dispatch, location.name])
+  }, [saves, dispatch, location?.name])
 
 
   return (

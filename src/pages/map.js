@@ -17,7 +17,6 @@ const Map = () => {
 
   const { data: news } = useGetWeatherNewsQuery(location?.region)
 
-console.log(location)
 
   if (isFetching) return 'Loading'
 
