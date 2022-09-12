@@ -11,7 +11,7 @@ const SavedItems = () => {
 
   useEffect(() => {
     dispatch(setSaves(savedItems))
-  }, [])
+  }, [dispatch, savedItems])
 
   
   const addSaves = (item) => {
@@ -32,7 +32,7 @@ const SavedItems = () => {
   useEffect(() => {
     // save to local storage
     localStorage.setItem('savedItems', JSON.stringify(saves))
-  }, [savedItems])
+  }, [savedItems, saves])
 
 
   return (

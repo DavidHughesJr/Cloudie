@@ -19,7 +19,7 @@ import { Chart } from 'react-chartjs-2';
 
 import ChartDataLabels from "chartjs-plugin-datalabels";
 import zoomPlugin from 'chartjs-plugin-zoom';
-import { current } from '@reduxjs/toolkit'
+
 
 ChartJS.register(
   ChartDataLabels,
