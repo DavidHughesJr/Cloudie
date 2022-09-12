@@ -27,7 +27,7 @@ const Dashboard = () => {
         const currentLocation =  locationState? locationState : [getGeoLocation?.coordinates.lat, getGeoLocation?.coordinates.lng].toString()
 
         dispatch(setLocation(currentLocation))
-    }, [getGeoLocation])
+    }, [getGeoLocation, dispatch, locationState])
 
     if (isFetching) return 'Loading'
 

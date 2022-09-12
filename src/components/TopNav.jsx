@@ -18,7 +18,6 @@ import {
     useLocation,
 } from 'react-router-dom';
 import { StaticRouter } from 'react-router-dom/server';
-import logo from '../img/logo.png'
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import MapIcon from '@mui/icons-material/Map';
 import StarIcon from '@mui/icons-material/Star';

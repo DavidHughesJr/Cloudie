@@ -18,7 +18,6 @@ const SearchBar = ({ location }) => {
 
   const { data } = useGetSearchWeatherQuery(search)
   const saves = useSelector(state => state.weatherState.saves)
-  const itemSaved = useSelector(state => state.weatherState.itemSaved)
   const dispatch = useDispatch()
 
   const getSavedItems = JSON.parse(localStorage.getItem('savedItems'))
