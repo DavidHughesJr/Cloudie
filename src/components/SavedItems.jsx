@@ -9,9 +9,10 @@ const SavedItems = () => {
   const saves = useSelector(state => state.weatherState.saves)
   const dispatch = useDispatch()
 
+
   useEffect(() => {
     dispatch(setSaves(savedItems))
-  }, [dispatch, savedItems])
+  }, [])
 
   
   const addSaves = (item) => {
@@ -32,13 +33,13 @@ const SavedItems = () => {
   useEffect(() => {
     // save to local storage
     localStorage.setItem('savedItems', JSON.stringify(saves))
-  }, [savedItems, saves])
+  }, [savedItems])
 
 
   return (
     <Stack spacing={2}>
       {
-        saves.length === 0 ? 'No Location Are Saved!' :
+        saves.length == 0 ? 'No Location Are Saved!' :
           saves?.map((local) => (
             <Paper sx={{ padding: 2 }} elevation={1} key={local.name} onClick={() => dispatch(setLocation(local.name))}>
               <Typography variant='h6'> {local.name} {local.region} </Typography>
