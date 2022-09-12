@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useMemo} from 'react'
 import { Button, Paper, Typography, Stack } from '@mui/material'
 import { useDispatch, useSelector } from 'react-redux'
 import { setLocation, setSaves } from '../services/weatherSlice'
@@ -12,9 +12,10 @@ const SavedItems = () => {
 
   useEffect(() => {
     dispatch(setSaves(savedItems))
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  
+
   const addSaves = (item) => {
     let itemList = [...saves]
     let addArray = true
@@ -30,10 +31,15 @@ const SavedItems = () => {
     dispatch(setSaves([...itemList]))
   }
 
+  const savesMemo = useMemo(() => {
+    return saves;
+  }, [saves]);
+
   useEffect(() => {
     // save to local storage
-    localStorage.setItem('savedItems', JSON.stringify(saves))
-  }, )
+    localStorage.setItem('savedItems', JSON.stringify(savesMemo))
+
+  }, [savedItems, savesMemo])
 
 
   return (

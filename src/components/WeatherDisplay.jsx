@@ -29,7 +29,8 @@ const WeatherDisplay = () => {
     useEffect(() => {
         const currentLocation = [getGeoLocation?.coordinates.lat, getGeoLocation?.coordinates.lng].toString()
         dispatch(setLocation(currentLocation))
-    })
+          // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [getGeoLocation])
 
 
     if (isFetching) return ''

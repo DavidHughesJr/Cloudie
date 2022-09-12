@@ -28,6 +28,7 @@ const SearchBar = ({ location }) => {
     if (getSavedItems) {
       dispatch(setSaves(getSavedItems))
     }
+      // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data])
 
   const handleKeyDown = (event) => {
@@ -73,7 +74,7 @@ const SearchBar = ({ location }) => {
         }
       }
     }
-
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [saves])
 
 
