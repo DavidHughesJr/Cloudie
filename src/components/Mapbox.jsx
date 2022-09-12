@@ -54,7 +54,7 @@ const Mapbox = ({ location, current }) => {
 
   useEffect(() => {
     dispatch(setSaves(savedItems))
-  }, [])
+  }, [dispatch, savedItems])
 
 
   const addSaves = (item) => {
@@ -87,7 +87,7 @@ const Mapbox = ({ location, current }) => {
       }
     }
 
-  }, [savedItems])
+  }, [savedItems, dispatch, location.name, saves])
 
 
   return (
