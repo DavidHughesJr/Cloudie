@@ -39,3 +39,6 @@ body {
   position: relative;
   top: 1rem
 }
+.loader {
+  width: 5rem;
+}

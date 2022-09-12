@@ -9,6 +9,7 @@ import WeatherChart from '../components/WeatherChart'
 import TodaysOverview from '../components/TodaysOverview'
 import SearchBar from '../components/Searchbar'
 import ThreeDayForecast from '../components/ThreeDayForecast'
+import sun from '../img/sun.gif'
 
 
 const Dashboard = () => {
@@ -24,30 +25,39 @@ const Dashboard = () => {
 
 
     useEffect(() => {
-        const currentLocation =  locationState? locationState : [getGeoLocation?.coordinates.lat, getGeoLocation?.coordinates.lng].toString()
+        const currentLocation = locationState ? locationState : [getGeoLocation?.coordinates.lat, getGeoLocation?.coordinates.lng].toString()
 
         dispatch(setLocation(currentLocation))
     }, [getGeoLocation, dispatch, locationState])
 
-    if (isFetching) return 'Loading'
+    if (isFetching) return (
+        <>
+            <Stack sx={{marginTop: 20}} direction="row"
+                justifyContent="center"
+                alignItems="center">
+                <img className='loader' src={sun} alt='loading' />
+            </Stack>
+
+        </>
+    )
 
     return (
         <Box p={4}>
             <Stack
-                direction={{sm: 'column', md: 'row'}}
+                direction={{ sm: 'column', md: 'row' }}
                 justifyContent="space-between"
-                sx={{paddingBottom: 2}}
-                >
+                sx={{ paddingBottom: 2 }}
+            >
                 <Stack>
                     <Typography variant='h5'> {location?.name} </Typography>
                     <Typography variant='subtitle2'> {location?.region} </Typography>
                     <Typography variant='subtitle2'>  <Moment format="LLL" date={dateToFormat} />  </Typography>
                 </Stack>
-                <SearchBar location={location}/>
+                <SearchBar location={location} />
             </Stack>
-            <Divider light/> 
+            <Divider light />
             <TodaysOverview current={current} forecast={forecast} />
-            <ThreeDayForecast forecast={forecast} /> 
+            <ThreeDayForecast forecast={forecast} />
             <WeatherChart forecast={forecast} />
         </Box>
     )

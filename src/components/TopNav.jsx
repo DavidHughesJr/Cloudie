@@ -21,6 +21,7 @@ import { StaticRouter } from 'react-router-dom/server';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import MapIcon from '@mui/icons-material/Map';
 import StarIcon from '@mui/icons-material/Star';
+import logo from '../img/logo.png'
 
 
 const drawerWidth = 240;
@@ -70,9 +71,7 @@ function TopNav(props) {
 
     const drawer = (
         <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
-            <Typography variant="h6" sx={{ my: 2 }}>
-                MUI
-            </Typography>
+            <img src={logo} alt="logo" />
             <Divider />
             <List>
                 <Tabs

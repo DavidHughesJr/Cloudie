@@ -29,10 +29,10 @@ const WeatherDisplay = () => {
     useEffect(() => {
         const currentLocation = [getGeoLocation?.coordinates.lat, getGeoLocation?.coordinates.lng].toString()
         dispatch(setLocation(currentLocation))
-    }, [getGeoLocation])
+    })
 
 
-    if (isFetching) return 'Loading'
+    if (isFetching) return ''
 
     return (
         <WeatherContainer>
