@@ -1,40 +1,39 @@
-import React from 'react'
-import Moment from 'react-moment';
+import React, { useEffect } from 'react'
 import useGeoLocation from '../hooks/useGeoLocation'
 import { useSelector, useDispatch } from 'react-redux'
 import { WeatherContainer } from '../theme/containers'
-import { Box, Typography, Button, Stack } from '@mui/material'
-import { StyledLinearProgress } from '../theme/theme'
 import { useGetForecastWeatherQuery } from '../services/weatherApi'
-import { setFahrenheit} from '../services/weatherSlice';
-import { SpaceAroundPaper } from '../theme/theme';
-import { Colors } from '../helper/colors'
+import { setLocation } from '../services/weatherSlice';
+// import { Box, Typography, Button, Stack } from '@mui/material'
+// import { StyledLinearProgress } from '../theme/theme'
+// import Moment from 'react-moment';
+// import { SpaceAroundPaper } from '../theme/theme';
+// import { Colors } from '../helper/colors'
 
 const WeatherDisplay = () => {
     const getGeoLocation = useGeoLocation()
-  
-    // const locationState = useSelector((state) => state.weatherState.location)
-    const { data, isFetching } = useGetForecastWeatherQuery(getGeoLocation?.coordinates.lat, getGeoLocation?.coordinates.lng)
+    const locationState = useSelector((state) => state.weatherState.location)
+    const { isFetching } = useGetForecastWeatherQuery(locationState)
     const dispatch = useDispatch()
 
 
 
-    // useEffect(() => {
-    //     const currentLocation = [getGeoLocation?.coordinates.lat, getGeoLocation?.coordinates.lng].toString()
-    //     dispatch(setLocation(currentLocation))
-    //     // eslint-disable-next-line 
-    // }, [getGeoLocation])
+    useEffect(() => {
+        const currentLocation = [getGeoLocation?.coordinates.lat, getGeoLocation?.coordinates.lng].toString()
+        dispatch(setLocation(currentLocation))
+// eslint-disable-next-line 
+    }, [getGeoLocation])
 
 
-    const current = data?.current
-    const forecast = data?.forecast?.forecastday
-    const location = data?.location
-    const astro = data?.forecast?.forecastday?.[0].astro
-    const dateToFormat = location?.localtime
-    const fahrenheit = useSelector(state => state.weatherState.fahrenheit)
-    const date = new Date()
-    const currentHour = date.getHours()
-    const rain48HourForecast = data ? [...forecast?.[0]?.hour, ...forecast?.[1]?.hour] : ''
+    // const current = data?.current
+    // const forecast = data?.forecast?.forecastday
+    // const location = data?.location
+    // const astro = data?.forecast?.forecastday?.[0].astro
+    // const dateToFormat = location?.localtime
+    // const fahrenheit = useSelector(state => state.weatherState.fahrenheit)
+    // const date = new Date()
+    // const currentHour = date.getHours()
+    // const rain48HourForecast = data ? [...forecast?.[0]?.hour, ...forecast?.[1]?.hour] : ''
 
 
 
@@ -43,7 +42,7 @@ const WeatherDisplay = () => {
 
     return (
         <WeatherContainer>
-            <Box p={4}>
+            {/* <Box p={4}>
                 <Box pb={4} sx={{ borderBottom: '1px solid lightgrey' }}>
                     <Typography variant='h5' color='secondary'> {location?.name} </Typography>
                     <Typography sx={{ paddingBottom: '1rem' }} variant='subtitle2' color='secondary'>  <Moment format="LT" date={dateToFormat} />  </Typography>
@@ -89,7 +88,7 @@ const WeatherDisplay = () => {
                         <Typography variant='subtitle2' color='secondary'> {astro.sunset} </Typography>
                     </SpaceAroundPaper>
                 </Stack>
-            </Box>
+            </Box> */}
         </WeatherContainer >
     )
 }
