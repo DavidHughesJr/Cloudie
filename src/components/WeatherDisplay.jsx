@@ -42,6 +42,7 @@ const WeatherDisplay = () => {
 
     return (
         <WeatherContainer>
+            hi 
             {/* <Box p={4}>
                 <Box pb={4} sx={{ borderBottom: '1px solid lightgrey' }}>
                     <Typography variant='h5' color='secondary'> {location?.name} </Typography>
