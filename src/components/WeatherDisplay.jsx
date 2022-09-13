@@ -13,7 +13,7 @@ import { setLocation } from '../services/weatherSlice';
 const WeatherDisplay = () => {
     const getGeoLocation = useGeoLocation()
     const locationState = useSelector((state) => state.weatherState.location)
-    const { isFetching } = useGetForecastWeatherQuery(locationState)
+    const { data, isFetching } = useGetForecastWeatherQuery(locationState)
     const dispatch = useDispatch()
 
 
@@ -21,7 +21,7 @@ const WeatherDisplay = () => {
     useEffect(() => {
         const currentLocation = [getGeoLocation?.coordinates.lat, getGeoLocation?.coordinates.lng].toString()
         dispatch(setLocation(currentLocation))
-// eslint-disable-next-line 
+        // eslint-disable-next-line 
     }, [getGeoLocation])
 
 
@@ -38,11 +38,12 @@ const WeatherDisplay = () => {
 
 
 
+    console.log(data)
     if (isFetching) return ''
 
     return (
         <WeatherContainer>
-            hi 
+            {data?.location.name}
             {/* <Box p={4}>
                 <Box pb={4} sx={{ borderBottom: '1px solid lightgrey' }}>
                     <Typography variant='h5' color='secondary'> {location?.name} </Typography>
