@@ -54,6 +54,7 @@ const Mapbox = ({ location, current }) => {
 
   useEffect(() => {
     dispatch(setSaves(savedItems))
+        // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
 
@@ -86,7 +87,7 @@ const Mapbox = ({ location, current }) => {
         }
       }
     }
-
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [savedItems])
 
 
