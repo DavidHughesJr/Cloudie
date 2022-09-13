@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import Moment from 'react-moment';
 import useGeoLocation from '../hooks/useGeoLocation'
 import { useSelector, useDispatch } from 'react-redux'
@@ -6,23 +6,24 @@ import { WeatherContainer } from '../theme/containers'
 import { Box, Typography, Button, Stack } from '@mui/material'
 import { StyledLinearProgress } from '../theme/theme'
 import { useGetForecastWeatherQuery } from '../services/weatherApi'
-import { setFahrenheit, setLocation } from '../services/weatherSlice';
+import { setFahrenheit} from '../services/weatherSlice';
 import { SpaceAroundPaper } from '../theme/theme';
 import { Colors } from '../helper/colors'
 
 const WeatherDisplay = () => {
     const getGeoLocation = useGeoLocation()
-    const locationState = useSelector((state) => state.weatherState.location)
-    const { data, isFetching } = useGetForecastWeatherQuery(locationState)
+  
+    // const locationState = useSelector((state) => state.weatherState.location)
+    const { data, isFetching } = useGetForecastWeatherQuery(getGeoLocation?.coordinates.lat, getGeoLocation?.coordinates.lng)
     const dispatch = useDispatch()
 
 
 
-    useEffect(() => {
-        const currentLocation = [getGeoLocation?.coordinates.lat, getGeoLocation?.coordinates.lng].toString()
-        dispatch(setLocation(currentLocation))
-
-    }, [dispatch, getGeoLocation])
+    // useEffect(() => {
+    //     const currentLocation = [getGeoLocation?.coordinates.lat, getGeoLocation?.coordinates.lng].toString()
+    //     dispatch(setLocation(currentLocation))
+    //     // eslint-disable-next-line 
+    // }, [getGeoLocation])
 
 
     const current = data?.current
