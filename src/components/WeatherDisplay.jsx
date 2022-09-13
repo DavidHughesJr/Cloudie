@@ -43,7 +43,8 @@ const WeatherDisplay = () => {
 
     return (
         <WeatherContainer>
-            {data?.location.name}
+
+            <div style={{color: 'white'}}> {data?.location.name} </div> 
             {/* <Box p={4}>
                 <Box pb={4} sx={{ borderBottom: '1px solid lightgrey' }}>
                     <Typography variant='h5' color='secondary'> {location?.name} </Typography>
