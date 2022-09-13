@@ -23,7 +23,7 @@ const WeatherDisplay = () => {
         const currentLocation = [getGeoLocation?.coordinates.lat, getGeoLocation?.coordinates.lng].toString()
         dispatch(setLocation(currentLocation))
         // eslint-disable-next-line 
-    }, [getGeoLocation])
+    }, [getGeoLocation, dispatch])
 
 
     const current = data?.current
