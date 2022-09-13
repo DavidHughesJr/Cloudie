@@ -14,23 +14,28 @@ const WeatherDisplay = () => {
     const getGeoLocation = useGeoLocation()
     const locationState = useSelector((state) => state.weatherState.location)
     const { data, isFetching } = useGetForecastWeatherQuery(locationState)
+    const dispatch = useDispatch()
+
+
+
+    useEffect(() => {
+        const currentLocation = [getGeoLocation?.coordinates.lat, getGeoLocation?.coordinates.lng].toString()
+        dispatch(setLocation(currentLocation))
+
+    }, [dispatch, getGeoLocation])
+
+
     const current = data?.current
     const forecast = data?.forecast?.forecastday
     const location = data?.location
     const astro = data?.forecast?.forecastday?.[0].astro
     const dateToFormat = location?.localtime
     const fahrenheit = useSelector(state => state.weatherState.fahrenheit)
-    const dispatch = useDispatch()
     const date = new Date()
     const currentHour = date.getHours()
     const rain48HourForecast = data ? [...forecast?.[0]?.hour, ...forecast?.[1]?.hour] : ''
 
 
-    useEffect(() => {
-        const currentLocation = [getGeoLocation?.coordinates.lat, getGeoLocation?.coordinates.lng].toString()
-        dispatch(setLocation(currentLocation))
-          
-    }, [dispatch, getGeoLocation])
 
 
     if (isFetching) return ''
