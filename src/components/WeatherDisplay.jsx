@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import useGeoLocation from '../hooks/useGeoLocation'
 import { useSelector, useDispatch } from 'react-redux'
 import { WeatherContainer } from '../theme/containers'
 import { useGetForecastWeatherQuery } from '../services/weatherApi'
-import { setLocation } from '../services/weatherSlice';
-// import { Box, Typography, Stack, Button } from '@mui/material'
-// import Moment from 'react-moment';
+import { setLocation, setFahrenheit} from '../services/weatherSlice';
+import { Box, Typography, Stack, Button } from '@mui/material'
+import Moment from 'react-moment';
 // import { SpaceAroundPaper } from '../theme/theme';
 // import { Colors } from '../helper/colors'
 // import { StyledLinearProgress } from '../theme/theme'
@@ -16,41 +16,31 @@ const WeatherDisplay = () => {
     const { data, isFetching } = useGetForecastWeatherQuery(locationState)
     const dispatch = useDispatch()
 
-    const [forecastData, setForecastData] = useState([])
+
 
     useEffect(() => {
-        const currentLocation = [getGeoLocation?.coordinates.lat, getGeoLocation?.coordinates.lng].toString()
+        const currentLocation = [getGeoLocation?.coordinates.lat, getGeoLocation?.coordinates.lng].toString()          
         dispatch(setLocation(currentLocation))
-        const allData = data
-        setForecastData(data)
         // eslint-disable-next-line 
-    }, [getGeoLocation, data])
+    }, [getGeoLocation, dispatch])
 
 
-
-
-    const current = forecastData?.current
-    const forecast = forecastData?.forecast?.forecastday
-    const location = forecastData?.location
+    const current = data?.current
+    // const forecast = data?.forecast?.forecastday
+    const location = data?.location
     // const astro = data?.forecast?.forecastday?.[0].astro
-    // const dateToFormat = location?.localtime
-    // const fahrenheit = useSelector(state => state.weatherState.fahrenheit)
+    const dateToFormat = location?.localtime
+    const fahrenheit = useSelector(state => state.weatherState.fahrenheit)
     // const date = new Date()
     // const currentHour = date.getHours()
     // const rain48HourForecast = data ? [...forecast?.[0]?.hour, ...forecast?.[1]?.hour] : ''
 
-    console.log(forecastData)
-
-    console.log(data)
     if (isFetching) return ''
 
     return (
         <WeatherContainer>
 
-            <div> {current?.condition.text} </div>
-            <div> {forecast?.[0].date} </div>
-            <div> {location.name} </div>
-            {/* <Box p={4}>
+            <Box p={4}>
                 <Box pb={4} sx={{ borderBottom: '1px solid lightgrey' }}>
                     <Typography variant='h5' color='secondary'> {location?.name} </Typography>
                     <Typography sx={{ paddingBottom: '1rem' }} variant='subtitle2' color='secondary'>  <Moment format="LT" date={dateToFormat} />  </Typography>
@@ -61,7 +51,7 @@ const WeatherDisplay = () => {
                     </Stack>
                     <Button onClick={() => dispatch(setFahrenheit(fahrenheit ? false : true))} variant="contained"> {fahrenheit ? 'celsius' : 'fahrenheit'} </Button>
                 </Box>
-                <Stack sx={{ marginTop: '1rem' }}>
+                {/* <Stack sx={{ marginTop: '1rem' }}>
                     <Typography sx={{ paddingBottom: '1rem' }} variant='h6' color='secondary'> Chance of rain </Typography>
                     {
                         rain48HourForecast?.slice(currentHour, currentHour + 4).map((hour, i) => {
@@ -95,8 +85,8 @@ const WeatherDisplay = () => {
                         </Stack>
                         <Typography variant='subtitle2' color='secondary'> {astro.sunset} </Typography>
                     </SpaceAroundPaper>
-                </Stack>
-            </Box> */}
+                </Stack> */}
+            </Box>
         </WeatherContainer >
     )
 }
