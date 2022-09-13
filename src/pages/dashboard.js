@@ -43,24 +43,25 @@ const Dashboard = () => {
     )
 
     return (
-        <Box p={4}>
-            <Stack
-                direction={{ sm: 'column', md: 'row' }}
-                justifyContent="space-between"
-                sx={{ paddingBottom: 2 }}
-            >
-                <Stack>
-                    <Typography variant='h5'> {location?.name} </Typography>
-                    <Typography variant='subtitle2'> {location?.region} </Typography>
-                    <Typography variant='subtitle2'>  <Moment format="LLL" date={dateToFormat} />  </Typography>
+        !getGeoLocation? '' : 
+            <Box p={4}>
+                <Stack
+                    direction={{ sm: 'column', md: 'row' }}
+                    justifyContent="space-between"
+                    sx={{ paddingBottom: 2 }}
+                >
+                    <Stack>
+                        <Typography variant='h5'> {location?.name} </Typography>
+                        <Typography variant='subtitle2'> {location?.region} </Typography>
+                        <Typography variant='subtitle2'>  <Moment format="LLL" date={dateToFormat} />  </Typography>
+                    </Stack>
+                    <SearchBar location={location} />
                 </Stack>
-                <SearchBar location={location} />
-            </Stack>
-            <Divider light />
-            <TodaysOverview current={current} forecast={forecast} />
-            <ThreeDayForecast forecast={forecast} />
-            <WeatherChart forecast={forecast} />
-        </Box>
+                <Divider light />
+                <TodaysOverview current={current} forecast={forecast} />
+                <ThreeDayForecast forecast={forecast} />
+                <WeatherChart forecast={forecast} />
+            </Box>
     )
 }
 
