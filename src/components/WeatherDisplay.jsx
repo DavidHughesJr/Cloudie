@@ -8,7 +8,7 @@ import { Box, Typography, Stack, Button } from '@mui/material'
 import Moment from 'react-moment';
 // import { SpaceAroundPaper } from '../theme/theme';
 // import { Colors } from '../helper/colors'
-// import { StyledLinearProgress } from '../theme/theme'
+import { StyledLinearProgress } from '../theme/theme'
 
 const WeatherDisplay = () => {
     const getGeoLocation = useGeoLocation()
@@ -26,14 +26,14 @@ const WeatherDisplay = () => {
 
 
     const current = data?.current
-    // const forecast = data?.forecast?.forecastday
+    const forecast = data?.forecast?.forecastday
     const location = data?.location
     // const astro = data?.forecast?.forecastday?.[0].astro
     const dateToFormat = location?.localtime
     const fahrenheit = useSelector(state => state.weatherState.fahrenheit)
-    // const date = new Date()
-    // const currentHour = date.getHours()
-    // const rain48HourForecast = data ? [...forecast?.[0]?.hour, ...forecast?.[1]?.hour] : ''
+    const date = new Date()
+    const currentHour = date.getHours()
+    const rain48HourForecast = data ? [...forecast?.[0]?.hour, ...forecast?.[1]?.hour] : ''    
 
     if (isFetching) return ''
 
@@ -51,7 +51,7 @@ const WeatherDisplay = () => {
                     </Stack>
                     <Button onClick={() => dispatch(setFahrenheit(fahrenheit ? false : true))} variant="contained"> {fahrenheit ? 'celsius' : 'fahrenheit'} </Button>
                 </Box>
-                {/* <Stack sx={{ marginTop: '1rem' }}>
+                <Stack sx={{ marginTop: '1rem' }}>
                     <Typography sx={{ paddingBottom: '1rem' }} variant='h6' color='secondary'> Chance of rain </Typography>
                     {
                         rain48HourForecast?.slice(currentHour, currentHour + 4).map((hour, i) => {
@@ -67,7 +67,7 @@ const WeatherDisplay = () => {
                         })
                     }
                 </Stack>
-                <Typography sx={{ paddingBottom: '1rem' }} variant='h5' color='secondary'> Sunrise & Sunset </Typography>
+                {/* <Typography sx={{ paddingBottom: '1rem' }} variant='h5' color='secondary'> Sunrise & Sunset </Typography>
                 <Stack spacing={2}>
                     <SpaceAroundPaper sx={{ backgroundImage: Colors.backgroundImage }}>
                         <img src="https://cdn.weatherapi.com/weather/64x64/day/116.png" alt="img" />
