@@ -6,7 +6,7 @@ import { DashboardContainer, MiddleContainer } from './theme/containers';
 // import { Routes, Route } from 'react-router-dom'
 // import { Dashboard, Map, Saves } from './pages/allPages'
 import TopNav from './components/TopNav';
-// import WeatherDisplay from './components/WeatherDisplay'
+import WeatherDisplay from './components/WeatherDisplay'
 
 
 const App = () => {
@@ -24,7 +24,7 @@ const App = () => {
               <Route path="/saves" element={<Saves />} />
             </Routes> */}
           </MiddleContainer>
-          {/* <WeatherDisplay /> */}
+          <WeatherDisplay />
         </DashboardContainer>
       </ThemeProvider>
     </div>
