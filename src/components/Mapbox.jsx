@@ -10,7 +10,7 @@ import { setLocation, setSaves, setItemSaved } from '../services/weatherSlice';
 
 
 
-const token = mapboxgl.accessToken = 'pk.eyJ1IjoiZGF2aWRodWdoZXNqciIsImEiOiJjbDN6dmlleGIzcHpoM2NyeHpwYmV0MW9jIn0.IPtZ9U22hIQNl6z1BsldMQ'
+const token = mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_TOKEN;
 
 const Mapbox = ({ location, current }) => {
 
