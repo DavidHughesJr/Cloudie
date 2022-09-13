@@ -7,7 +7,7 @@ import Moment from 'react-moment';
 import useGeoLocation from '../hooks/useGeoLocation'
 import WeatherChart from '../components/WeatherChart'
 import TodaysOverview from '../components/TodaysOverview'
-import SearchBar from '../components/Searchbar'
+
 import ThreeDayForecast from '../components/ThreeDayForecast'
 import sun from '../img/sun.gif'
 
