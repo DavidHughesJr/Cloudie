@@ -26,8 +26,8 @@ const WeatherDisplay = () => {
 
 
     const current = data?.current
-    // const forecast = data?.forecast?.forecastday
-    // const location = data?.location
+    const forecast = data?.forecast?.forecastday
+    const location = data?.location
     // const astro = data?.forecast?.forecastday?.[0].astro
     // const dateToFormat = location?.localtime
     // const fahrenheit = useSelector(state => state.weatherState.fahrenheit)
@@ -35,7 +35,7 @@ const WeatherDisplay = () => {
     // const currentHour = date.getHours()
     // const rain48HourForecast = data ? [...forecast?.[0]?.hour, ...forecast?.[1]?.hour] : ''
 
-
+console.log(forecast)
 
 
     console.log(data)
@@ -45,6 +45,8 @@ const WeatherDisplay = () => {
         <WeatherContainer>
 
             <div> {current?.condition.text} </div>
+            <div> {forecast?.[0].date} </div>
+            <div> {location.name} </div>
             {/* <Box p={4}>
                 <Box pb={4} sx={{ borderBottom: '1px solid lightgrey' }}>
                     <Typography variant='h5' color='secondary'> {location?.name} </Typography>
