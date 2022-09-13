@@ -3,12 +3,12 @@ import useGeoLocation from '../hooks/useGeoLocation'
 import { useSelector, useDispatch } from 'react-redux'
 import { WeatherContainer } from '../theme/containers'
 import { useGetForecastWeatherQuery } from '../services/weatherApi'
-import { setLocation, setFahrenheit } from '../services/weatherSlice';
-import { Box, Typography, Stack, Button } from '@mui/material'
-import Moment from 'react-moment';
-import { SpaceAroundPaper } from '../theme/theme';
-import { Colors } from '../helper/colors'
-import { StyledLinearProgress } from '../theme/theme'
+import { setLocation } from '../services/weatherSlice';
+// import { Box, Typography, Stack, Button } from '@mui/material'
+// import Moment from 'react-moment';
+// import { SpaceAroundPaper } from '../theme/theme';
+// import { Colors } from '../helper/colors'
+// import { StyledLinearProgress } from '../theme/theme'
 
 const WeatherDisplay = () => {
     const getGeoLocation = useGeoLocation()
@@ -26,14 +26,14 @@ const WeatherDisplay = () => {
 
 
     const current = data?.current
-    const forecast = data?.forecast?.forecastday
-    const location = data?.location
-    const astro = data?.forecast?.forecastday?.[0].astro
-    const dateToFormat = location?.localtime
-    const fahrenheit = useSelector(state => state.weatherState.fahrenheit)
-    const date = new Date()
-    const currentHour = date.getHours()
-    const rain48HourForecast = data ? [...forecast?.[0]?.hour, ...forecast?.[1]?.hour] : ''
+    // const forecast = data?.forecast?.forecastday
+    // const location = data?.location
+    // const astro = data?.forecast?.forecastday?.[0].astro
+    // const dateToFormat = location?.localtime
+    // const fahrenheit = useSelector(state => state.weatherState.fahrenheit)
+    // const date = new Date()
+    // const currentHour = date.getHours()
+    // const rain48HourForecast = data ? [...forecast?.[0]?.hour, ...forecast?.[1]?.hour] : ''
 
 
 
@@ -43,7 +43,9 @@ const WeatherDisplay = () => {
 
     return (
         <WeatherContainer>
-            <Box p={4}>
+
+            <div> {current?.condition.text} </div>
+            {/* <Box p={4}>
                 <Box pb={4} sx={{ borderBottom: '1px solid lightgrey' }}>
                     <Typography variant='h5' color='secondary'> {location?.name} </Typography>
                     <Typography sx={{ paddingBottom: '1rem' }} variant='subtitle2' color='secondary'>  <Moment format="LT" date={dateToFormat} />  </Typography>
@@ -89,7 +91,7 @@ const WeatherDisplay = () => {
                         <Typography variant='subtitle2' color='secondary'> {astro.sunset} </Typography>
                     </SpaceAroundPaper>
                 </Stack>
-            </Box>
+            </Box> */}
         </WeatherContainer >
     )
 }
