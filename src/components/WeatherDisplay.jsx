@@ -6,8 +6,8 @@ import { useGetForecastWeatherQuery } from '../services/weatherApi'
 import { setLocation, setFahrenheit} from '../services/weatherSlice';
 import { Box, Typography, Stack, Button } from '@mui/material'
 import Moment from 'react-moment';
-// import { SpaceAroundPaper } from '../theme/theme';
-// import { Colors } from '../helper/colors'
+import { SpaceAroundPaper } from '../theme/theme';
+import { Colors } from '../helper/colors'
 import { StyledLinearProgress } from '../theme/theme'
 
 const WeatherDisplay = () => {
@@ -28,7 +28,7 @@ const WeatherDisplay = () => {
     const current = data?.current
     const forecast = data?.forecast?.forecastday
     const location = data?.location
-    // const astro = data?.forecast?.forecastday?.[0].astro
+    const astro = data?.forecast?.forecastday?.[0].astro
     const dateToFormat = location?.localtime
     const fahrenheit = useSelector(state => state.weatherState.fahrenheit)
     const date = new Date()
@@ -67,7 +67,7 @@ const WeatherDisplay = () => {
                         })
                     }
                 </Stack>
-                {/* <Typography sx={{ paddingBottom: '1rem' }} variant='h5' color='secondary'> Sunrise & Sunset </Typography>
+                <Typography sx={{ paddingBottom: '1rem' }} variant='h5' color='secondary'> Sunrise & Sunset </Typography>
                 <Stack spacing={2}>
                     <SpaceAroundPaper sx={{ backgroundImage: Colors.backgroundImage }}>
                         <img src="https://cdn.weatherapi.com/weather/64x64/day/116.png" alt="img" />
@@ -85,7 +85,7 @@ const WeatherDisplay = () => {
                         </Stack>
                         <Typography variant='subtitle2' color='secondary'> {astro.sunset} </Typography>
                     </SpaceAroundPaper>
-                </Stack> */}
+                </Stack>
             </Box>
         </WeatherContainer >
     )
