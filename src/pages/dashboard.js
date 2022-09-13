@@ -5,10 +5,10 @@ import { Box, Typography, Stack, Divider } from '@mui/material'
 import { useGetForecastWeatherQuery } from '../services/weatherApi'
 import Moment from 'react-moment';
 import useGeoLocation from '../hooks/useGeoLocation'
-// import WeatherChart from '../components/WeatherChart'
-// import TodaysOverview from '../components/TodaysOverview'
-// import SearchBar from '../components/Searchbar'
-// import ThreeDayForecast from '../components/ThreeDayForecast'
+import WeatherChart from '../components/WeatherChart'
+import TodaysOverview from '../components/TodaysOverview'
+import SearchBar from '../components/Searchbar'
+import ThreeDayForecast from '../components/ThreeDayForecast'
 import sun from '../img/sun.gif'
 
 
@@ -18,8 +18,8 @@ const Dashboard = () => {
     const { data, isFetching } = useGetForecastWeatherQuery(locationState)
     const dispatch = useDispatch()
 
-    // const current = data?.current
-    // const forecast = data?.forecast?.forecastday
+    const current = data?.current
+    const forecast = data?.forecast?.forecastday
     const location = data?.location
     const dateToFormat = location?.localtime
 
@@ -54,12 +54,12 @@ const Dashboard = () => {
                     <Typography variant='subtitle2'> {location?.region} </Typography>
                     <Typography variant='subtitle2'>  <Moment format="LLL" date={dateToFormat} />  </Typography>
                 </Stack>
-                {/* <SearchBar location={location} /> */}
+                <SearchBar location={location} />
             </Stack>
             <Divider light />
-            {/* <TodaysOverview current={current} forecast={forecast} /> */}
-            {/* <ThreeDayForecast forecast={forecast} /> */}
-            {/* <WeatherChart forecast={forecast} /> */}
+            <TodaysOverview current={current} forecast={forecast} />
+            <ThreeDayForecast forecast={forecast} />
+            <WeatherChart forecast={forecast} />
         </Box>
     )
 }
