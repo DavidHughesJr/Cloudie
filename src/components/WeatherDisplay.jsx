@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import useGeoLocation from '../hooks/useGeoLocation'
 import { useSelector, useDispatch } from 'react-redux'
 import { WeatherContainer } from '../theme/containers'
@@ -16,18 +16,22 @@ const WeatherDisplay = () => {
     const { data, isFetching } = useGetForecastWeatherQuery(locationState)
     const dispatch = useDispatch()
 
-
+    const [forecastData, setForecastData] = useState([])
 
     useEffect(() => {
-        const currentLocation = [getGeoLocation?.coordinates.lat, getGeoLocation?.coordinates.lng].toString()          
+        const currentLocation = [getGeoLocation?.coordinates.lat, getGeoLocation?.coordinates.lng].toString()
         dispatch(setLocation(currentLocation))
+        const allData = data
+        setForecastData(data)
         // eslint-disable-next-line 
-    }, [getGeoLocation, dispatch])
+    }, [getGeoLocation, data])
 
 
-    const current = data?.current
-    const forecast = data?.forecast?.forecastday
-    const location = data?.location
+
+
+    const current = forecastData?.current
+    const forecast = forecastData?.forecast?.forecastday
+    const location = forecastData?.location
     // const astro = data?.forecast?.forecastday?.[0].astro
     // const dateToFormat = location?.localtime
     // const fahrenheit = useSelector(state => state.weatherState.fahrenheit)
@@ -35,8 +39,7 @@ const WeatherDisplay = () => {
     // const currentHour = date.getHours()
     // const rain48HourForecast = data ? [...forecast?.[0]?.hour, ...forecast?.[1]?.hour] : ''
 
-console.log(forecast)
-
+    console.log(forecastData)
 
     console.log(data)
     if (isFetching) return ''
