@@ -1,14 +1,14 @@
 import React, { useEffect } from 'react'
 import useGeoLocation from '../hooks/useGeoLocation'
 import { useSelector, useDispatch } from 'react-redux'
-import { WeatherContainer } from '../theme/containers'
+import { WeatherContainer } from '../theme/styled'
 import { useGetForecastWeatherQuery } from '../services/weatherApi'
 import { setLocation, setFahrenheit} from '../services/weatherSlice';
 import { Box, Typography, Stack, Button } from '@mui/material'
 import Moment from 'react-moment';
-import { SpaceAroundPaper } from '../theme/theme';
+import { SpaceAroundPaper } from '../theme/styled';
 import { Colors } from '../helper/colors'
-import { StyledLinearProgress } from '../theme/theme'
+import { StyledLinearProgress } from '../theme/styled'
 
 const WeatherDisplay = () => {
     const getGeoLocation = useGeoLocation()

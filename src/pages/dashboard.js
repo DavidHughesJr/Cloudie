@@ -5,7 +5,7 @@ import { Box, Typography, Stack, Divider } from '@mui/material'
 import { useGetForecastWeatherQuery } from '../services/weatherApi'
 import Moment from 'react-moment';
 import useGeoLocation from '../hooks/useGeoLocation'
-import WeatherChart from '../components/WeatherChart'
+import WeatherChart from '../components/Chart'
 import TodaysOverview from '../components/TodaysOverview'
 import SearchBar from '../components/Searchbar'
 import ThreeDayForecast from '../components/ThreeDayForecast'

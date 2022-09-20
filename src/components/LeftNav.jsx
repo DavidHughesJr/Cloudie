@@ -13,7 +13,7 @@ import logo from '../img/logo.png'
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import MapIcon from '@mui/icons-material/Map';
 import StarIcon from '@mui/icons-material/Star';
-import { LeftNavContainer } from '../theme/containers';
+import { LeftNavContainer } from '../theme/styled';
 
 function Router(props) {
     const { children } = props;
