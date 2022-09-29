@@ -1,46 +1,71 @@
-Setup: 
-  ✔ Delete defaults @done(22-08-21 09:39)
-  ✔ Change Favicon & Title @done(22-08-21 09:39)
-  ✔ Add Images @done(22-08-21 10:04)
-  Create React App & add dependencies:  
-    ✔ Material Ui @done(22-08-21 09:39)
-    ✔ Redux Toolkit @done(22-08-21 09:39)
-    ✔ React Router @done(22-08-21 09:39)
-    ✔ Mapbox @done(22-08-21 09:39)
-    ✔ Chart Js @done(22-08-21 09:39)
-    ✔ npm i @mui/material @emotion/react @emotion/styled @mui/icons-material @reduxjs/toolkit moment react-moment react-redux react-router-dom@6 chart.js react-chartjs-2 chartjs-plugin-zoom chartjs-plugin-datalabels mapbox-gl react-map-gl @mapbox/mapbox-gl-geocoder swiper --save"  @done(22-08-21 10:09)
-   Setup File Structure:
-    ✔ Components @done(22-08-21 10:09)
-    ✔ Pages @done(22-08-21 10:09)
-    ✔ Api with redux store & app folder @done(22-08-21 11:25)
-    Style Considerations: 
-      ✔ Colors Themes Etc @done(22-08-21 14:23)
-Layout: 
-  ✔ Create vertical nav @done(22-08-21 22:16)
-  ✔ Link Routes @done(22-08-21 22:16)
-  ✔ Create weather dsiplay @done(22-08-21 22:18)
-  ✔ Dashboard page @done(22-08-21 22:18)
-  ✔ Map page @done(22-08-21 22:18)
-  ✔ Saved Locations @done(22-08-21 22:18)
-Dashboard:
-  ✔ Navigation to switch betwen pages @done(22-08-21 22:19)
-  ☐ Create Search
-  ☐ Use Moment to fix times
-  ☐ Geolocation Custom Hook to always load on location
-  ☐ Display Common information // Todays overview & Daily Temp
-  ☐ Create Chart
-  ☐ F to C On Charts
-  ☐ Create weather display
-  ☐ Add Button for C & F
-  ☐ Add Loader
-Map:
-  ☐ Show Location On Search.
-  ☐ Condense Todays overview.
-  ☐ Add Top 10 Cites On Map.
-Saved Location:
-  ☐ Display Location Name
-  ☐ OnClick display info on left.
-Hide Keys: 
-  ☐ Weather Api
-  ☐ Mapbox Token
-  
+• Setup React App: 
+☐ Delete defaults
+☐ Change Favicon & Title 
+☐ Add Images
+
+• Add dependencies:  
+ ☐ Material Ui
+☐ Redux Toolkit 
+☐ React Router
+☐ Mapbox 
+☐ Chart Js
+☐ Swiper
+☐ npm i @mui/material @emotion/react @emotion/styled @mui/icons-material @reduxjs/toolkit moment react-moment react-redux react-router-dom@6 chart.js react-chartjs-2 chartjs-plugin-zoom chartjs-plugin-datalabels mapbox-gl react-map-gl @mapbox/mapbox-gl-geocoder swiper --save" 
+
+• Setup File Structure: 
+☐ app
+☐ components
+☐ helper
+☐ hooks
+☐ img
+☐ pages
+☐ services
+☐ theme
+
+• Setup Custom Material Ui Theme: 
+☐ styled
+☐ theme
+
+• Setup Redux App & Services: 
+☐ weatherapi
+☐ weatherSlice
+☐ newsApi
+
+• Setup Small Details (Helper Hooks & Imgs): 
+☐ colors
+☐ geolocation hook
+☐ imgs: logo and loader
+
+• Create Layout: 
+☐ Create vertical nav
+☐ Link Routes
+☐ Create weather dsiplay
+☐ Dashboard page 
+☐ Map page
+☐ Saved Locations
+
+• Dashboard: 
+☐ Navigation to switch betwen pages
+☐ Create Search
+☐ Use Moment to fix times
+☐ Geolocation Custom Hook to always load on location
+☐ Display Common information // Todays overview & Daily Temp
+☐ Create Chart
+☐ F to C On Charts
+☐ Create weather display
+☐ Add Button for C & F
+☐ Add Loader
+
+• Map: 
+☐ Show Location On Search.
+☐ Condense Todays overview.
+☐ Add Top 10 Cites On Map.
+
+• Saved Location: 
+☐ Display Location Name
+☐ OnClick display info on left.
+
+• Hide Keys: 
+☐ Weather Api
+☐ Mapbox Token
+  
