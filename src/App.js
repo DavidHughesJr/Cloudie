@@ -9,7 +9,7 @@ import TopNav from './components/TopNav';
 import WeatherDisplay from './components/WeatherDisplay'
 
 
-console.log(process.env.REACT_APP_NEWS_API_KEY)
+console.log(process.env.REACT_APP_MAPBOX_KEY)
 
 const App = () => {
 
