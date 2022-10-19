@@ -52,12 +52,16 @@ const WeatherChart = ({ forecast }) => {
 
 
   const fahrenheit = useSelector((state) => state.weatherState.fahrenheit)
-  const combine48Hours = forecast ? [...forecast?.[0].hour, ...forecast?.[1].hour] : ''
+  
+  const dayOneHours = forecast?.[0].hour
+  const dayTwoHours = forecast?.[1].hour
+  const hours48Length = dayOneHours?.concat(dayTwoHours)
+
   const date = new Date()
   const currentHour = date.getHours()
 
 
-  combine48Hours?.slice(currentHour).forEach((hour) => {
+  hours48Length?.slice(currentHour).forEach((hour) => {
     const time = new Date(hour.time)
     const convertedTime = time.toLocaleString('en-US', { hour: 'numeric', hour12: true })
     hourlyTimes.push(convertedTime)

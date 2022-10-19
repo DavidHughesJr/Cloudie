@@ -1,9 +1,9 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import useGeoLocation from '../hooks/useGeoLocation'
 import { useSelector, useDispatch } from 'react-redux'
 import { WeatherContainer } from '../theme/styled'
 import { useGetForecastWeatherQuery } from '../services/weatherApi'
-import { setLocation, setFahrenheit} from '../services/weatherSlice';
+import { setFahrenheit} from '../services/weatherSlice';
 import { Box, Typography, Stack, Button } from '@mui/material'
 import Moment from 'react-moment';
 import { SpaceAroundPaper } from '../theme/styled';
@@ -12,17 +12,10 @@ import { StyledLinearProgress } from '../theme/styled'
 
 const WeatherDisplay = () => {
     const getGeoLocation = useGeoLocation()
+    const isLoadingLocation = getGeoLocation.loaded
     const locationState = useSelector((state) => state.weatherState.location)
     const { data, isFetching } = useGetForecastWeatherQuery(locationState)
     const dispatch = useDispatch()
-
-
-
-    useEffect(() => {
-        const currentLocation = [getGeoLocation?.coordinates.lat, getGeoLocation?.coordinates.lng].toString()          
-        dispatch(setLocation(currentLocation))
-        // eslint-disable-next-line 
-    }, [getGeoLocation, dispatch])
 
 
     const current = data?.current
@@ -33,9 +26,16 @@ const WeatherDisplay = () => {
     const fahrenheit = useSelector(state => state.weatherState.fahrenheit)
     const date = new Date()
     const currentHour = date.getHours()
-    const rain48HourForecast = data ? [...forecast?.[0]?.hour, ...forecast?.[1]?.hour] : ''    
 
-    if (isFetching) return ''
+
+    const dayOneHours = forecast?.[0].hour
+    const dayTwoHours = forecast?.[1].hour
+
+    const hours48Length = dayOneHours?.concat(dayTwoHours)
+  
+
+    if (isFetching || !isLoadingLocation) return ''
+
 
     return (
         <WeatherContainer>
@@ -54,7 +54,7 @@ const WeatherDisplay = () => {
                 <Stack sx={{ marginTop: '1rem' }}>
                     <Typography sx={{ paddingBottom: '1rem' }} variant='h6' color='secondary'> Chance of rain </Typography>
                     {
-                        rain48HourForecast?.slice(currentHour, currentHour + 4).map((hour, i) => {
+                        hours48Length?.slice(currentHour, currentHour + 4).map((hour, i) => {
                             const dateToFormathour = hour.time
                             return (
                                 <Box key={i} sx={{ display: 'flex', justifyContent: 'space-between', gap: '1rem' }}>
@@ -73,17 +73,17 @@ const WeatherDisplay = () => {
                         <img src="https://cdn.weatherapi.com/weather/64x64/day/116.png" alt="img" />
                         <Stack>
                             <Typography variant='subtitle2' color='secondary'> Sunrise </Typography>
-                            <Typography variant='subtitle2' color='secondary'> {astro.sunrise} </Typography>
+                            <Typography variant='subtitle2' color='secondary'> {astro?.sunrise} </Typography>
                         </Stack>
-                        <Typography variant='subtitle2' color='secondary'> {astro.sunrise} </Typography>
+                        <Typography variant='subtitle2' color='secondary'> {astro?.sunrise} </Typography>
                     </SpaceAroundPaper>
                     <SpaceAroundPaper sx={{ backgroundImage: Colors.backgroundImage }}>
                         <img src="https://cdn.weatherapi.com/weather/64x64/night/116.png" alt="img" />
                         <Stack>
                             <Typography variant='subtitle2' color='secondary'> Sunset </Typography>
-                            <Typography variant='subtitle2' color='secondary'> {astro.sunset}  </Typography>
+                            <Typography variant='subtitle2' color='secondary'> {astro?.sunset}  </Typography>
                         </Stack>
-                        <Typography variant='subtitle2' color='secondary'> {astro.sunset} </Typography>
+                        <Typography variant='subtitle2' color='secondary'> {astro?.sunset} </Typography>
                     </SpaceAroundPaper>
                 </Stack>
             </Box>

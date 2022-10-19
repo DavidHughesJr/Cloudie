@@ -12,19 +12,26 @@ const TodaysOverview = ({ current, forecast }) => {
     const fahrenheit = useSelector(state => state.weatherState.fahrenheit)
     const date = new Date()
     const currentHour = date.getHours()
-    const hours48length = [...forecast?.[0].hour, ...forecast?.[1].hour]
+
+    const dayOneHours = forecast?.[0].hour
+    const dayTwoHours = forecast?.[1].hour
+
+    const hours48Length = dayOneHours?.concat(dayTwoHours)
+
+
 
     const todaysOverviewItems = [
         { item: 'High', value: fahrenheit ? `${forecast?.[0].day.maxtemp_f}°F` : `${forecast?.[0].day.maxtemp_c}°C`}, 
         { item: 'Low', value: fahrenheit ? `${forecast?.[0].day.mintemp_f}°F` : `${forecast?.[0].day.mintemp_c}°C` }, 
-        { item: 'Wind Speed', value: `${current?.wind_mph}mph` },
-        { item: 'Rain Chance', value: `${forecast?.[0]?.day?.daily_chance_of_rain}%` },
+        { item: 'Wind', value: `${current?.wind_mph}mph` },
+        { item: 'Rain', value: `${forecast?.[0]?.day?.daily_chance_of_rain}%` },
         { item: 'Pressure', value: `${current?.pressure_in}in` },
         { item: 'Humidity', value: current?.uv },
     ]
 
   
 
+    
     return (
         <Box sx={{ marginTop: '2rem' }}>
             <Typography sx={{ marginBottom: '1rem', }} color='primary' variant='h6'> Todays Overview </Typography>
@@ -58,15 +65,15 @@ const TodaysOverview = ({ current, forecast }) => {
                 }}
                 >
                 {
-                    hours48length?.slice(currentHour).map((hour, i) => {
-                        const dateToFormathour = hour.time
+                    hours48Length?.slice(currentHour).map((hour, i) => {
+                        const dateToFormatHour = hour.time
                         return (
                             <SwiperSlide
                             >
-                                <Box key={i}>
+                                <Box key={hour.time}>
                                     <Paper sx={{ backgroundImage: Colors.backgroundImage, width: '5rem' }}>
                                         <Stack justifyContent='center' alignItems='center'>
-                                            <Typography variant='subtitle2' color='secondary'>  <Moment format="hhA" date={dateToFormathour} /> </Typography>
+                                            <Typography variant='subtitle2' color='secondary'>  <Moment format="hhA" date={dateToFormatHour} /> </Typography>
                                             <img src={hour.condition.icon} alt="weather icon" />
                                             <Typography color='secondary'> {fahrenheit ? `${hour.temp_f}°F` : `${hour.temp_c}°C`}</Typography>
                                             <Typography color='secondary'> {hour.chance_of_rain}% </Typography>
