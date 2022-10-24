@@ -18,8 +18,6 @@ const TodaysOverview = ({ current, forecast }) => {
 
     const hours48Length = dayOneHours?.concat(dayTwoHours)
 
-
-
     const todaysOverviewItems = [
         { item: 'High', value: fahrenheit ? `${forecast?.[0].day.maxtemp_f}°F` : `${forecast?.[0].day.maxtemp_c}°C`}, 
         { item: 'Low', value: fahrenheit ? `${forecast?.[0].day.mintemp_f}°F` : `${forecast?.[0].day.mintemp_c}°C` }, 
@@ -29,7 +27,6 @@ const TodaysOverview = ({ current, forecast }) => {
         { item: 'Humidity', value: current?.uv },
     ]
 
-  
 
     
     return (

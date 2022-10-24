@@ -1,26 +1,9 @@
 import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Divider from '@mui/material/Divider';
-import Drawer from '@mui/material/Drawer';
-import IconButton from '@mui/material/IconButton';
-import List from '@mui/material/List';
-import MenuIcon from '@mui/icons-material/Menu';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import PropTypes from 'prop-types';
-import Tabs from '@mui/material/Tabs';
-import Tab from '@mui/material/Tab';
-import {
-    MemoryRouter,
-    Link,
-    matchPath,
-    useLocation,
-} from 'react-router-dom';
+import { MemoryRouter, Link, matchPath, useLocation } from 'react-router-dom';
 import { StaticRouter } from 'react-router-dom/server';
-import DashboardIcon from '@mui/icons-material/Dashboard';
-import MapIcon from '@mui/icons-material/Map';
-import StarIcon from '@mui/icons-material/Star';
+import PropTypes from 'prop-types';
+import { AppBar, Box, Divider, Drawer, IconButton, List, Toolbar, Tabs, Tab, Typography } from '@mui/material';
+import { Menu, Dashboard, Star, Map } from '@mui/icons-material'
 import logo from '../img/logo.png'
 
 
@@ -79,9 +62,9 @@ function TopNav(props) {
                     orientation="vertical"
                     indicatorColor=''
                 >
-                    <Tab icon={<DashboardIcon />} label="Dashboard" value="/" to="/" component={Link} />
-                    <Tab icon={<MapIcon />} label="Map" value="/map" to="/map" component={Link} />
-                    <Tab icon={<StarIcon />} label="Saves" value="/saves" to="/saves" component={Link} />
+                    <Tab icon={<Dashboard />} label="Dashboard" value="/" to="/" component={Link} />
+                    <Tab icon={<Map />} label="Map" value="/map" to="/map" component={Link} />
+                    <Tab icon={<Star />} label="Saves" value="/saves" to="/saves" component={Link} />
                 </Tabs>
             </List>
         </Box>
@@ -103,7 +86,7 @@ function TopNav(props) {
                         onClick={handleDrawerToggle}
                         sx={{ mr: 2, display: { sm: 'none' } }}
                     >
-                        <MenuIcon />
+                        <Menu />
                     </IconButton>
                     <Typography
                         variant="h6"

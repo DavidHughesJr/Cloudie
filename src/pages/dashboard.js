@@ -24,6 +24,8 @@ const Dashboard = () => {
     const location = data?.location
     const dateToFormat = location?.localtime
 
+    console.log(locationState)
+
 
     useEffect(() => {
         let currentLocation = ''
