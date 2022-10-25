@@ -1,12 +1,13 @@
 import React from 'react'
 import { ThemeProvider } from '@mui/material/styles';
-import LeftNav from './components/LeftNav'
 import { theme } from './theme/theme'
 import { DashboardContainer, MiddleContainer } from './theme/styled';
 import { Routes, Route } from 'react-router-dom'
 import { Dashboard, Map, Saves } from './pages/allPages'
 import TopNav from './components/TopNav';
 import WeatherDisplay from './components/WeatherDisplay'
+import LeftNav from './components/LeftNav'
+import Footer from './components/Footer';
 
 
 const App = () => {
@@ -26,6 +27,7 @@ const App = () => {
           </MiddleContainer>
           <WeatherDisplay />
         </DashboardContainer>
+        <Footer /> 
       </ThemeProvider>
     </div>
 

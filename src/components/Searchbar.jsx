@@ -2,8 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { setLocation } from '../services/weatherSlice'
 import { Box, Autocomplete, TextField, InputAdornment, ToggleButton } from '@mui/material'
-import SearchIcon from '@mui/icons-material/Search';
-import StarIcon from '@mui/icons-material/Star';
+import { Search, Star } from '@mui/icons-material'
 import { useGetSearchWeatherQuery } from '../services/weatherApi'
 import { setSaves, setItemSaved } from "../services/weatherSlice";
 
@@ -28,7 +27,7 @@ const SearchBar = ({ location }) => {
     if (getSavedItems) {
       dispatch(setSaves(getSavedItems))
     }
-      // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data])
 
   const handleKeyDown = (event) => {
@@ -46,12 +45,12 @@ const SearchBar = ({ location }) => {
       if (saves[i].name === item.name) {
         itemList.splice(i, 1);
         addArray = false
-      
+
       }
     }
     if (addArray) {
       itemList.push(item)
-     
+
     }
     dispatch(setSaves([...itemList]))
   }
@@ -74,7 +73,7 @@ const SearchBar = ({ location }) => {
         }
       }
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [saves])
 
 
@@ -98,7 +97,7 @@ const SearchBar = ({ location }) => {
             InputProps={{
               ...params.InputProps,
               type: 'search',
-              startAdornment: <InputAdornment position="start"> <SearchIcon /> </InputAdornment>,
+              startAdornment: <InputAdornment position="start"> <Search /> </InputAdornment>,
 
             }}
           />
@@ -115,7 +114,7 @@ const SearchBar = ({ location }) => {
 
         }}
       >
-        <StarIcon />
+        <Star />
       </ToggleButton>
     </Box>
   )

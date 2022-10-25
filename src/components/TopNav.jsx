@@ -1,7 +1,7 @@
 import * as React from 'react';
+import PropTypes from 'prop-types';
 import { MemoryRouter, Link, matchPath, useLocation } from 'react-router-dom';
 import { StaticRouter } from 'react-router-dom/server';
-import PropTypes from 'prop-types';
 import { AppBar, Box, Divider, Drawer, IconButton, List, Toolbar, Tabs, Tab, Typography } from '@mui/material';
 import { Menu, Dashboard, Star, Map } from '@mui/icons-material'
 import logo from '../img/logo.png'

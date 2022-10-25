@@ -4,10 +4,9 @@ import Map, { Marker, Popup, GeolocateControl, NavigationControl, useControl } f
 import MapBoxGeocoder from '@mapbox/mapbox-gl-geocoder';
 import { useSelector, useDispatch } from 'react-redux';
 import { Typography, Stack, Button } from '@mui/material';
+import { setLocation, setSaves, setItemSaved } from '../services/weatherSlice';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css'
-import { setLocation, setSaves, setItemSaved } from '../services/weatherSlice';
-
 
 
 const token = mapboxgl.accessToken = "pk.eyJ1IjoiZGF2aWRodWdoZXNqciIsImEiOiJjbDN6dmlleGIzcHpoM2NyeHpwYmV0MW9jIn0.IPtZ9U22hIQNl6z1BsldMQ"  

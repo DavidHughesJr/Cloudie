@@ -1,14 +1,14 @@
 import React from 'react'
 import useGeoLocation from '../hooks/useGeoLocation'
-import { useSelector, useDispatch } from 'react-redux'
-import { WeatherContainer } from '../theme/styled'
-import { useGetForecastWeatherQuery } from '../services/weatherApi'
-import { setFahrenheit} from '../services/weatherSlice';
-import { Box, Typography, Stack, Button } from '@mui/material'
 import Moment from 'react-moment';
+import { useSelector, useDispatch } from 'react-redux'
+import { useGetForecastWeatherQuery } from '../services/weatherApi'
+import { setFahrenheit } from '../services/weatherSlice';
+import { Box, Typography, Stack, Button } from '@mui/material'
 import { SpaceAroundPaper } from '../theme/styled';
-import { Colors } from '../helper/colors'
 import { StyledLinearProgress } from '../theme/styled'
+import { WeatherContainer } from '../theme/styled'
+import { Colors } from '../helper/colors'
 
 const WeatherDisplay = () => {
     const getGeoLocation = useGeoLocation()
@@ -32,7 +32,7 @@ const WeatherDisplay = () => {
     const dayTwoHours = forecast?.[1].hour
 
     const hours48Length = dayOneHours?.concat(dayTwoHours)
-  
+
 
     if (isFetching || !isLoadingLocation) return ''
 

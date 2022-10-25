@@ -1,19 +1,11 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
-import Tabs from '@mui/material/Tabs';
-import Tab from '@mui/material/Tab';
-import {
-    MemoryRouter,
-    Link,
-    matchPath,
-    useLocation,
-} from 'react-router-dom';
+import { Tabs, Tab } from '@mui/material'
+import { MemoryRouter, Link, matchPath, useLocation } from 'react-router-dom';
 import { StaticRouter } from 'react-router-dom/server';
-import logo from '../img/logo.png'
-import DashboardIcon from '@mui/icons-material/Dashboard';
-import MapIcon from '@mui/icons-material/Map';
-import StarIcon from '@mui/icons-material/Star';
+import { Dashboard, Map, Star } from '@mui/icons-material'
 import { LeftNavContainer } from '../theme/styled';
+import logo from '../img/logo.png'
 
 function Router(props) {
     const { children } = props;
@@ -64,9 +56,9 @@ export default function LeftNav() {
                 orientation="vertical"
                 indicatorColor=''
             >
-                <Tab icon={<DashboardIcon />} label="Dashboard" value="/" to="/" component={Link} />
-                <Tab icon={<MapIcon />} label="Map" value="/map" to="/map" component={Link} />
-                <Tab icon={<StarIcon />} label="Saves" value="/saves" to="/saves" component={Link} />
+                <Tab icon={<Dashboard />} label="Dashboard" value="/" to="/" component={Link} />
+                <Tab icon={<Map />} label="Map" value="/map" to="/map" component={Link} />
+                <Tab icon={<Star />} label="Saves" value="/saves" to="/saves" component={Link} />
             </Tabs>
         </LeftNavContainer>
 
