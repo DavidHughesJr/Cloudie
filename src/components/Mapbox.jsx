@@ -9,7 +9,7 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css'
 
 
-const token = mapboxgl.accessToken = "pk.eyJ1IjoiZGF2aWRodWdoZXNqciIsImEiOiJjbDN6dmlleGIzcHpoM2NyeHpwYmV0MW9jIn0.IPtZ9U22hIQNl6z1BsldMQ"  
+const token = mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_KEY
 
 
 const Mapbox = ({ location, current }) => {
