@@ -6,11 +6,9 @@ import { Colors } from '../helper/colors'
 export const theme = createTheme({
     palette: {
         primary: {
-            // Purple and green play nicely together.
             main: Colors.text,
         },
         secondary: {
-            // Purple and green play nicely together.
             main: Colors.secondaryText,
         },
     },
