@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import mapboxgl from 'mapbox-gl'; // eslint-disable-line import/no-webpack-loader-syntax
+import mapboxgl from '!mapbox-gl'; 
 import Map, { Marker, Popup, GeolocateControl, NavigationControl, useControl } from 'react-map-gl';
 import MapBoxGeocoder from '@mapbox/mapbox-gl-geocoder';
 import { useSelector, useDispatch } from 'react-redux';
