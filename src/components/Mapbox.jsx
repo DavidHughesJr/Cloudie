@@ -97,7 +97,7 @@ const Mapbox = ({ location, current }) => {
         {...viewState}
         style={{ width: '50', height: '50vh' }}
         onMove={evt => setViewState(evt.viewState)}
-        mapStyle="mapbox://styles/mapbox/streets-v9"
+        mapStyle="mapbox://styles/mapbox/streets-v11"
         mapboxAccessToken={token}
       >
         <Marker longitude={lng} latitude={lat} anchor="bottom" >
