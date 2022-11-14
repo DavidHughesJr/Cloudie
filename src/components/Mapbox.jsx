@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import mapboxgl from 'mapbox-gl'; 
+import mapboxgl from '!mapbox-gl'; // eslint-disable-line import/no-webpack-loader-syntax
 import Map, { Marker, Popup, GeolocateControl, NavigationControl, useControl } from 'react-map-gl';
 import MapBoxGeocoder from '@mapbox/mapbox-gl-geocoder';
 import { useSelector, useDispatch } from 'react-redux';
@@ -9,7 +9,7 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css'
 
 
-mapboxgl.accessToken = `pk.eyJ1IjoiZGF2aWRodWdoZXNqciIsImEiOiJjbDN6dmlleGIzcHpoM2NyeHpwYmV0MW9jIn0.IPtZ9U22hIQNl6z1BsldMQ`
+const token = mapboxgl.accessToken = `pk.eyJ1IjoiZGF2aWRodWdoZXNqciIsImEiOiJjbDN6dmlleGIzcHpoM2NyeHpwYmV0MW9jIn0.IPtZ9U22hIQNl6z1BsldMQ`
 
 
 const Mapbox = ({ location, current }) => {
@@ -20,7 +20,7 @@ const Mapbox = ({ location, current }) => {
   const [viewState, setViewState] = useState({
     longitude: lng,
     latitude: lat,
-    zoom: 9
+    zoom: 10
   });
   const [showPopup, setShowPopup] = useState(false);
 
@@ -36,7 +36,7 @@ const Mapbox = ({ location, current }) => {
 
   const Geocoder = () => {
     const geoMap = new MapBoxGeocoder({
-      accessToken: 'pk.eyJ1IjoiZGF2aWRodWdoZXNqciIsImEiOiJjbDN6dmlleGIzcHpoM2NyeHpwYmV0MW9jIn0.IPtZ9U22hIQNl6z1BsldMQ',
+      accessToken: token,
       marker: false,
       collapsed: true
     })
@@ -98,7 +98,7 @@ const Mapbox = ({ location, current }) => {
         style={{ width: '50', height: '50vh' }}
         onMove={evt => setViewState(evt.viewState)}
         mapStyle="mapbox://styles/mapbox/streets-v11"
-        mapboxAccessToken='pk.eyJ1IjoiZGF2aWRodWdoZXNqciIsImEiOiJjbDN6dmlleGIzcHpoM2NyeHpwYmV0MW9jIn0.IPtZ9U22hIQNl6z1BsldMQ'
+        mapboxAccessToken={token}
       >
         <Marker longitude={lng} latitude={lat} anchor="bottom" >
           <Stack justifyContent="center" alignItems="center" onClick={() => setShowPopup(true)}>
