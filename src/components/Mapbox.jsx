@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import mapboxgl from '!mapbox-gl'; // eslint-disable-line import/no-webpack-loader-syntax
-import Map, { Marker, Popup, GeolocateControl, NavigationControl, useControl } from 'react-map-gl';
-import MapBoxGeocoder from '@mapbox/mapbox-gl-geocoder';
+import Map from 'react-map-gl';
+// import MapBoxGeocoder from '@mapbox/mapbox-gl-geocoder';
 import { useSelector, useDispatch } from 'react-redux';
-import { Typography, Stack, Button } from '@mui/material';
-import { setLocation, setSaves, setItemSaved } from '../services/weatherSlice';
+import { Button } from '@mui/material';
+import { setSaves, setItemSaved } from '../services/weatherSlice';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css'
 
@@ -22,30 +22,30 @@ const Mapbox = ({ location, current }) => {
     latitude: lat,
     zoom: 10
   });
-  const [showPopup, setShowPopup] = useState(false);
+  // const [showPopup, setShowPopup] = useState(false);
 
-  const fahrenheit = useSelector(state => state.weatherState.fahrenheit)
+  // const fahrenheit = useSelector(state => state.weatherState.fahrenheit)
   const dispatch = useDispatch()
-  const geolocateControlRef = React.useCallback((ref) => {
-    if (ref) {
-      // Activate as soon as the control is loaded
-      ref.trigger();
-    }
-  }, []);
+  // const geolocateControlRef = React.useCallback((ref) => {
+  //   if (ref) {
+  //     // Activate as soon as the control is loaded
+  //     ref.trigger();
+  //   }
+  // }, []);
 
 
-  const Geocoder = () => {
-    const geoMap = new MapBoxGeocoder({
-      accessToken: token,
-      marker: false,
-      collapsed: true
-    })
-    useControl(() => geoMap)
-    geoMap.on('result', (e) => {
-      dispatch(setLocation(e.result.text))
+  // const Geocoder = () => {
+  //   const geoMap = new MapBoxGeocoder({
+  //     accessToken: token,
+  //     marker: false,
+  //     collapsed: true
+  //   })
+  //   useControl(() => geoMap)
+  //   geoMap.on('result', (e) => {
+  //     dispatch(setLocation(e.result.text))
 
-    })
-  }
+  //   })
+  // }
 
 
   const savedItems = JSON.parse(localStorage.getItem('savedItems'))
@@ -90,6 +90,9 @@ const Mapbox = ({ location, current }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [savedItems])
 
+  // mapbox fix
+
+
 
   return (
     <>
@@ -100,7 +103,7 @@ const Mapbox = ({ location, current }) => {
         mapStyle="mapbox://styles/mapbox/streets-v11"
         mapboxAccessToken={token}
       >
-        <Marker longitude={lng} latitude={lat} anchor="bottom" >
+        {/* <Marker longitude={lng} latitude={lat} anchor="bottom" >
           <Stack justifyContent="center" alignItems="center" onClick={() => setShowPopup(true)}>
 
             <img className='mapbox-img' src={current ? current?.condition.icon : ''} alt="weather logo" />
@@ -116,7 +119,7 @@ const Mapbox = ({ location, current }) => {
             closeOnClick={false}
             onClose={() => setShowPopup(false)}>
             You are here
-          </Popup>)}
+          </Popup>)} */}
       </Map>
       <Button onClick={() => { addSaves(location); dispatch(setItemSaved(!savedToLocal)) }} sx={savedToLocal ? { margin: '0 !important', backgroundColor: 'green' } : { margin: '0 !important', backgroundColor: '' }} variant={'contained'}> {savedToLocal ? 'Location Saved' : 'Save location'} </Button>
     </>
