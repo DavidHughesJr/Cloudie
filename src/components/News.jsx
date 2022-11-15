@@ -50,7 +50,7 @@ const News = ({ news }) => {
                         const dateToFormat = news?.datePublished
                         return (
                           <SwiperSlide>
-                                <Card variant='outlined' sx={{ maxWidth: 300, minHeight: 300 }}>
+                                <Card key={news[i]} variant='outlined' sx={{ maxWidth: 300, minHeight: 300 }}>
                                     <CardContent>
                                         <Stack spacing={1}>
                                             <Typography variant='subtitle2'> {shortText(news?.name, 50)} </Typography>
