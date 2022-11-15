@@ -29,16 +29,18 @@ const Mapbox = ({ location, current }) => {
   const lat = location?.lat
   const lng = location?.lon
 
+  // eslint-disable-next-line
+  const fahrenheit = useSelector(state => state.weatherState.fahrenheit)
+  const dispatch = useDispatch()
+
+
   // const [viewState, setViewState] = useState({
   //   longitude: lng,
   //   latitude: lat,
   //   zoom: 10
   // });
   // const [showPopup, setShowPopup] = useState(false);
-  
-// eslint-disable-next-line
-  const fahrenheit = useSelector(state => state.weatherState.fahrenheit)
-  const dispatch = useDispatch()
+
 
   // const geolocateControlRef = React.useCallback((ref) => {
   //   if (ref) {
@@ -104,7 +106,7 @@ const Mapbox = ({ location, current }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [savedItems])
 
-  //mapbox fix for netlify
+  // *** ATTENTION THIS STARTS mapbox fix for netlify *** 
   const mapContainer = useRef(null);
   const map = useRef(null);
   const [lng2, setLng] = useState(lng);
@@ -120,7 +122,7 @@ const Mapbox = ({ location, current }) => {
       center: [lng2, lat2],
       zoom: zoom,
     }); // eslint-disable-next-line
-    const marker = new mapboxgl.Marker() 
+    const marker = new mapboxgl.Marker()
       .setLngLat([lng2, lat2]) // Marker [lng, lat] coordinates
       .setPopup(
         new mapboxgl.Popup({ offset: 25 }) // add popups
@@ -129,9 +131,6 @@ const Mapbox = ({ location, current }) => {
           )
       )
       .addTo(map.current); // Initialize a new marker
-
-
-
 
     const geocoder = new MapboxGeocoder({
       // Initialize the geocoder
@@ -149,7 +148,6 @@ const Mapbox = ({ location, current }) => {
     });
   });
 
-
   useEffect(() => {
     if (!map.current) return; // wait for map to initialize
     map.current.on('move', () => {
@@ -159,7 +157,7 @@ const Mapbox = ({ location, current }) => {
     });
   });
 
-console.log(location)
+  // *** ATTENTION THIS ENDS mapbox fix for netlify *** 
 
   return (
     <>
