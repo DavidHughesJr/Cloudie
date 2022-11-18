@@ -52,6 +52,7 @@ const Dashboard = () => {
                     <Typography variant='h5'> {location?.name} </Typography>
                     <Typography variant='subtitle2'> {location?.region} </Typography>
                     <Typography variant='subtitle2'>  <Moment format="LL" date={dateToFormat} />  </Typography>
+                    <div>    <div> {process.env.REACT_APP_WEATHER_API_KEY} hh</div> </div>
                 </Stack>
                 <SearchBar location={location} />
             </Stack>
