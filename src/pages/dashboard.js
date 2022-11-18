@@ -51,7 +51,7 @@ const Dashboard = () => {
                 <Stack>
                     <Typography variant='h5'> {location?.name} </Typography>
                     <Typography variant='subtitle2'> {location?.region} </Typography>
-                    <Typography variant='subtitle2'>  <Moment format="LLL" date={dateToFormat} />  </Typography>
+                    <Typography variant='subtitle2'>  <Moment format="LL" date={dateToFormat} />  </Typography>
                 </Stack>
                 <SearchBar location={location} />
             </Stack>
